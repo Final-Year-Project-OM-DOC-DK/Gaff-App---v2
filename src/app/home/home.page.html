@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <img src ="assets/img/1gaf.png" />
+
+      Gaff App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--fireabse UI-->
+  <firebase-ui></firebase-ui>
+
+  <!--current user object is null if user is logged out, ng if displays is a user is logged in-->
+  <h1 *ngIf="afAuth.auth.currentUser">
+    Welcome {{afAuth.auth.currentUser.displayName}}!</h1>
+
+  <h1>This is the home.page.html</h1>
+
+  <!--sign out button and select house button only appear when a user is logged in / via *ngIF-->
+  <ion-button *ngIf="afAuth.auth.currentUser" (click)="signOut()">Sign Out</ion-button>
+  <br>
+  <ion-button *ngIf="afAuth.auth.currentUser" (click)="goToSelectHousePage()">Select House</ion-button>
+
+</ion-content>
