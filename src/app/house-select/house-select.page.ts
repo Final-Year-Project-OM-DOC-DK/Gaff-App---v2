@@ -3,6 +3,8 @@ import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 
 import { House, HouseService } from 'src/app/Services/house.service';
+import { RouterModule } from '@angular/router';
+import { AddHousePage } from '../add-house/add-house.page';
 
 
 @Component({
@@ -15,10 +17,15 @@ export class HouseSelectPage implements OnInit {
   private houses: Observable<House[]>;
 
   constructor(public navCtrl: NavController,
-              private houseService: HouseService) { }
+              private houseService: HouseService,
+              private router: RouterModule) { }
 
   ngOnInit() {
     this.houses = this.houseService.getHouses();
+  }
+
+  goToAddPage(){
+    this.navCtrl.navigateForward('add-house');
   }
 
 }

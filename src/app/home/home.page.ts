@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NavController } from '@ionic/angular';
-import { HouseSelectPageModule } from '../house-select/house-select.module';
+//import { HouseSelectPageModule } from '../house-select/house-select.module';
 
 @Component({
   selector: 'app-home',

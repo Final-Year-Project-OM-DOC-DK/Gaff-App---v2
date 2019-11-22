@@ -8,7 +8,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import { AngularFirestoreCollection, AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 
-export interface House{
+export interface House {
   id?: string,
   name: string,
   members: string[]
@@ -26,20 +26,20 @@ export class HouseService {
     this.houseCollection = this.afs.collection<House>('house');
     this.houses = this.houseCollection.snapshotChanges().pipe(
       map(actions => {
-        return actions.map(a =>{
+        return actions.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
-          return { id, ...data};
+          return { id, ...data };
         });
       })
     );
   }
 
-  getHouses(): Observable<House[]>{
+  getHouses(): Observable<House[]> {
     return this.houses;
   }
 
-  getHouse(id: string): Observable<House>{
+  getHouse(id: string): Observable<House> {
     return this.houseCollection.doc<House>(id).valueChanges().pipe(
       take(1), //takes one observable as there is no need to keep constantly updated
       map(house => {
@@ -54,7 +54,7 @@ export class HouseService {
   }
 
   updateHouse(house: House): Promise<void> {
-    return this.houseCollection.doc(house.id).update({ name: house.name, members: house.members });   
+    return this.houseCollection.doc(house.id).update({ name: house.name, members: house.members });
   }
 
   deleteHouse(id: string): Promise<void> {

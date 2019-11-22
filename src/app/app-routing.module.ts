@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'forum', loadChildren: './forum/forum.module#ForumPageModule' },
   { path: 'shoppinglist', loadChildren: './shoppinglist/shoppinglist.module#ShoppinglistPageModule' },
   { path: 'bills', loadChildren: './bills/bills.module#BillsPageModule' },
+  { path: 'add-house', loadChildren: './add-house/add-house.module#AddHousePageModule' },
 ];
 
 @NgModule({
