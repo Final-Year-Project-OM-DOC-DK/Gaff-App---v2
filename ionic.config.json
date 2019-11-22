@@ -1,5 +1,7 @@
 {
   "name": "GaffApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

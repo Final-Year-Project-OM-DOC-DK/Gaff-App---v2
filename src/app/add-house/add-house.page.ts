@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
+import { House, HouseService } from '../Services/house.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-house',
@@ -8,9 +10,44 @@ import { NavController } from '@ionic/angular';
 })
 export class AddHousePage implements OnInit {
 
-  constructor(private navCtrl : NavController) { }
+  //initialise house object, define elements of house. no need for Id as it is automatically generated
+  house: House = {
+  name: '',
+  address: '',
+  eircode: '',
+  members: [],
+  bills: {},
+  calander: {},
+  forum: {},
+  shoppingList: {},
+  toDoList: {}
+  }
+
+  constructor(private navCtrl : NavController,
+              private houseService: HouseService,
+              private toastCtrl: ToastController,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+  }
+
+  addHouse(){
+    this.houseService.addHouse(this.house).then(() => {
+      this.router.navigateByUrl('/');
+      this.showToast('House Added');
+    }, err => {
+      this.showToast('ERROR: house could not be added');
+    });
+  }
+
+
+  //function to create toast 
+  showToast(msg){
+    this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    }).then(toast => toast.present());
   }
 
 }

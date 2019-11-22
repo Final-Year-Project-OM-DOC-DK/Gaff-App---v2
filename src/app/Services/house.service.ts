@@ -11,7 +11,14 @@ import { AngularFirestoreCollection, AngularFirestore, DocumentReference } from 
 export interface House {
   id?: string,
   name: string,
-  members: string[]
+  address: string,
+  eircode: string,
+  members: string[],
+  bills: {},
+  calander: {},
+  forum: {},
+  shoppingList: {},
+  toDoList: {}
 }
 
 @Injectable({
@@ -54,7 +61,7 @@ export class HouseService {
   }
 
   updateHouse(house: House): Promise<void> {
-    return this.houseCollection.doc(house.id).update({ name: house.name, members: house.members });
+    return this.houseCollection.doc(house.id).update({ name:house.name, address:house.address, eircode:house.eircode});
   }
 
   deleteHouse(id: string): Promise<void> {
