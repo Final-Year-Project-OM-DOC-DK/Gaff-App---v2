@@ -61,7 +61,7 @@ export class HouseService {
   }
 
   updateHouse(house: House): Promise<void> {
-    return this.houseCollection.doc(house.id).update({ name:house.name, address:house.address, eircode:house.eircode});
+    return this.houseCollection.doc(house.id).update({ name:house.name, address:house.address, eircode:house.eircode });
   }
 
   deleteHouse(id: string): Promise<void> {

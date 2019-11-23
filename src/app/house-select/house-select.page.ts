@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { House, HouseService } from 'src/app/Services/house.service';
 import { RouterModule } from '@angular/router';
 import { AddHousePage } from '../add-house/add-house.page';
+import { HouseDetailsPage } from '../house-details/house-details.page';
 
 
 @Component({
@@ -26,6 +27,10 @@ export class HouseSelectPage implements OnInit {
 
   goToAddPage(){
     this.navCtrl.navigateForward('add-house');
+  }
+
+  goToHouseDetailsPage(){
+    this.navCtrl.navigateForward('house-details:id');
   }
 
 }

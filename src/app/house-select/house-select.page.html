@@ -17,7 +17,7 @@
   <ion-list>
     <!--has to be async in order to deal with observables-->
     <!--router link to be used to navigate to next page once house is clicked-->
-    <ion-item button *ngFor="let house of (houses | async)" [routerLink]="['/house', house.id]">
+    <ion-item button *ngFor="let house of (houses | async)" (click)="goToHouseDetailsPage()">
       {{ house.name }}
     </ion-item>
   </ion-list>

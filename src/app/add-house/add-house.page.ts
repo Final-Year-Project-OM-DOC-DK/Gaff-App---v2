@@ -42,7 +42,7 @@ export class AddHousePage implements OnInit {
   }
 
 
-  //function to create toast 
+  //function to create
   showToast(msg){
     this.toastCtrl.create({
       message: msg,

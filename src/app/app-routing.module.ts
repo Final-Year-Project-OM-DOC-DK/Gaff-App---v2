@@ -7,13 +7,14 @@ const routes: Routes = [
   { path: 'terms', loadChildren: './terms/terms.module#TermsPageModule' },
   { path: 'privacy', loadChildren: './privacy/privacy.module#PrivacyPageModule' },
   { path: 'house-select', loadChildren: './house-select/house-select.module#HouseSelectPageModule' },
-  { path: 'house-select:id', loadChildren: './house-select/house-select.module#HouseSelectPageModule' },
   { path: 'todolist', loadChildren: './todolist/todolist.module#TodolistPageModule' },
   { path: 'calander', loadChildren: './calander/calander.module#CalanderPageModule' },
   { path: 'forum', loadChildren: './forum/forum.module#ForumPageModule' },
   { path: 'shoppinglist', loadChildren: './shoppinglist/shoppinglist.module#ShoppinglistPageModule' },
   { path: 'bills', loadChildren: './bills/bills.module#BillsPageModule' },
   { path: 'add-house', loadChildren: './add-house/add-house.module#AddHousePageModule' },
+  { path: 'house-details', loadChildren: './house-details/house-details.module#HouseDetailsPageModule' },
+  { path: 'house-details:id', loadChildren: './house-details/house-details.module#HouseDetailsPageModule' },
 ];
 
 @NgModule({
