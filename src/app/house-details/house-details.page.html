@@ -1,16 +1,25 @@
-<ion-header>
-  <ion-toolbar color="secondary">
-    <!--back button on top left of toolbar-->
-    <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-    <ion-title>Your House</ion-title>
-    <ion-button slot="end" class="ion-padding-end">
-        <ion-icon name="menu"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
- <p>house details page working</p>
- </ion-content>
+<ion-menu contentId="content">
+  
+    <ion-header>
+        <ion-toolbar color="secondary">
+          <ion-title>Your House</ion-title>
+          <ion-back-button slot="end"></ion-back-button>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+            <ion-item [routerLink]="p.url" routerDirection="root" [class.active-item]="selectedPath === p.url">
+              {{ p.title }}
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+
+</ion-menu>
+
+<ion-router-outlet id="content" main></ion-router-outlet>
+
+ 

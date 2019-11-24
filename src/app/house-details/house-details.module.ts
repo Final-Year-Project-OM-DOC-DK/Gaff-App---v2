@@ -7,10 +7,22 @@ import { IonicModule } from '@ionic/angular';
 
 import { HouseDetailsPage } from './house-details.page';
 
+//added children to the routes so that it can go to selected menu options
 const routes: Routes = [
   {
+    path: 'menu',
+    component: HouseDetailsPage,
+    children: [
+      { path: 'todolist', loadChildren: '../todolist/todolist.module#TodolistPageModule' },
+      { path: 'calander', loadChildren: '../calander/calander.module#CalanderPageModule' },
+      { path: 'forum', loadChildren: '../forum/forum.module#ForumPageModule' },
+      { path: 'shoppinglist', loadChildren: '../shoppinglist/shoppinglist.module#ShoppinglistPageModule' },
+      { path: 'bills', loadChildren: '../bills/bills.module#BillsPageModule' }
+    ]
+  },
+  {
     path: '',
-    component: HouseDetailsPage
+    redirectTo: 'menu/todolist'
   }
 ];
 
@@ -23,4 +35,4 @@ const routes: Routes = [
   ],
   declarations: [HouseDetailsPage]
 })
-export class HouseDetailsPageModule {}
+export class HouseDetailsPageModule { }

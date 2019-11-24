@@ -15,7 +15,7 @@ import { HouseDetailsPage } from '../house-details/house-details.page';
 })
 export class HouseSelectPage implements OnInit {
 
-  private houses: Observable<House[]>;
+  public houses: Observable<House[]>;
 
   constructor(public navCtrl: NavController,
               private houseService: HouseService,

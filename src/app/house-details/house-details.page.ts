@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import { HouseService, House } from '../Services/house.service';
 
 @Component({
@@ -10,54 +10,51 @@ import { HouseService, House } from '../Services/house.service';
 export class HouseDetailsPage implements OnInit {
 
   private house: House;
-  //test
-  navigate: any;
+  pages = [
+    {
+      title: 'To Do List',
+      url: 'todolist'
+    },
+    {
+      title: 'Calander',
+      url: 'calander'
+    },
+    {
+      title: 'Shopping List',
+      url: 'shoppinglist'
+    },
+    {
+      title: 'Forum',
+      url: 'forum'
+    },
+    {
+      title: 'Bills',
+      url: 'bills'
+    }
+  ];
 
- 
+  selectedPath = '';
+
   constructor(private activatedRoute: ActivatedRoute,
-              private houseService: HouseService,
-              private route: Router) {
-                this.sideMenu();
-               }
+    private houseService: HouseService,
+    private route: Router) {
 
+    this.route.events.subscribe((event: RouterEvent) => {
+      this.selectedPath = event.url;
+    });
+  }//end constructor
 
   //On initialisation of page, use url param (house id from previous page) to get house object from DB
   ngOnInit() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(id);
-    if (id){
+    if (id) {
       this.houseService.getHouse(id).subscribe(house => {
         this.house = house;
         console.log(this.house);
         console.log(this.house.address);
       });
     }
-  }
-
-  sideMenu() {
-    this.navigate = [
-      {
-        title : "To Do List",
-        url : "todolist",
-        icon : "checkbox-outline"
-      },
-      {
-        title : "Calander",
-        url : "calander",
-        icon : ""
-      },
-      {
-        title : "Shopping List",
-        url : "shoppinglist",
-        icon : ""
-      },
-      {
-        title : "Forum",
-        url : "forum",
-        icon : ""
-      },
-
-    ]
   }
 
 }
