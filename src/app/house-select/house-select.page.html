@@ -1,25 +1,29 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <!--back button on top left of toolbar-->
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
       <!--Add button to right of toolbar. Goes to Add House page-->
     </ion-buttons>
-    <ion-title slot="start">houseSelect</ion-title>
-    <ion-button slot="end" (click)="goToAddPage()">
+    <ion-title slot="start">Select House</ion-title>
+    <ion-button color="success" slot="end" class="ion-padding-end" (click)="goToAddPage()">
       <ion-icon name="add"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+<ion-card>
   <ion-list>
     <!--has to be async in order to deal with observables-->
     <!--router link to be used to navigate to next page once house is clicked-->
-    <ion-item button *ngFor="let house of (houses | async)" (click)="goToHouseDetailsPage()">
+    <ion-item button *ngFor="let house of (houses | async)" (click)="goToHouseDetailsPage(this.house)">
       {{ house.name }}
     </ion-item>
   </ion-list>
+  <p class="ion-padding">Please select a house from the list above</p>
+</ion-card>
+
+
 
 </ion-content>
