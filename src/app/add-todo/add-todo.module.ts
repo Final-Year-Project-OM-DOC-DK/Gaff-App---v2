@@ -5,15 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TodolistPage } from './todolist.page';
+import { AddTodoPage } from './add-todo.page';
 
 const routes: Routes = [
   {
-    path: '',
-    component: TodolistPage,
-    children: [
-      { path: 'add-todo', loadChildren: './add-todo/add-todo.module#Add-todoPageModule'},
-    ]
+    path: 'add-todo',
+    component: AddTodoPage
   }
 ];
 
@@ -24,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TodolistPage]
+  declarations: [AddTodoPage]
 })
-export class TodolistPageModule {}
+export class AddTodoPageModule {}

@@ -7,6 +7,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding >
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed"
+  (click)="gottoAddTodo()">
+    <ion-fab-button color="danger">
+        <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+    
 
 </ion-content>
