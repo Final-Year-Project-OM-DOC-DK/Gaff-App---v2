@@ -10,15 +10,32 @@ import{ToastController} from '@ionic/angular';
 })
 export class AddTodoPage implements OnInit {
 
+<<<<<<< HEAD
+  
+
+=======
+>>>>>>> 5dad1eb5db3e8f7ab1d941f9d1f27ee94b128222
   todo_title:string;
   todo_description: string;
   todo_last_date: Date;
   todo_owner: string;
 
+<<<<<<< HEAD
+  constructor(private navCtrl:NavController, private toastCtrl:ToastController) { 
+   
+  this.todo_owner = firebase.auth().currentUser.uid;
+  }
+
+  ngOnInit() {
+  }
+
+  addTodo(){
+=======
   constructor(private navCtrl: NavController, private toastCtrl:ToastController) { 
   this.todo_owner = firebase.auth().currentUser.uid;
   }
   ngOnInit() {
+>>>>>>> 5dad1eb5db3e8f7ab1d941f9d1f27ee94b128222
 
     firebase.firestore().collection("house").doc("this.house.id").collection("toDoList").add({
       title: this.todo_title,
@@ -33,18 +50,32 @@ export class AddTodoPage implements OnInit {
         duration: 2000
       }).then((toast) => {
         toast.present();
+<<<<<<< HEAD
         this.navCtrl.setDirection('back');
+=======
         this.navCtrl.navigateBack
+>>>>>>> 5dad1eb5db3e8f7ab1d941f9d1f27ee94b128222
       })
        }).catch((err) => {
          this.toastCtrl.create({
-           message: err.message,
+           message: "ToDo has been Added",
+<<<<<<< HEAD
            duration: 2000
-        }).then((toast) => {
-          toast.present();
-        })
+         }).then((toast) => {
+           toast.present();
+           this.navCtrl.setDirection('back');
+=======
+           duration: 3000
+         }).then((toast) => {
+           toast.present();
+>>>>>>> 5dad1eb5db3e8f7ab1d941f9d1f27ee94b128222
+         })
+         })
+       }
     
-  })
-}}
+  }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5dad1eb5db3e8f7ab1d941f9d1f27ee94b128222
