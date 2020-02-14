@@ -10,10 +10,7 @@ import { TodolistPage } from './todolist.page';
 const routes: Routes = [
   {
     path: '',
-    component: TodolistPage,
-    children: [
-      { path: 'add-todo', loadChildren: './add-todo/add-todo.module#Add-todoPageModule'},
-    ]
+    component: TodolistPage
   }
 ];
 

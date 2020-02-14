@@ -33,7 +33,7 @@ export class HouseDetailsPage implements OnInit {
     }
   ];
 
-  selectedPath = 'todolist';
+  selectedPath = '';
 
   constructor(private activatedRoute: ActivatedRoute,
     private houseService: HouseService,
