@@ -9,11 +9,7 @@ import { AddTodoPage } from './add-todo.page';
 
 const routes: Routes = [
   {
-<<<<<<< HEAD
     path: 'add-todo',
-=======
-    path: '',
->>>>>>> 5dad1eb5db3e8f7ab1d941f9d1f27ee94b128222
     component: AddTodoPage
   }
 ];
