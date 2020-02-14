@@ -29,7 +29,7 @@ export class TodolistPage implements OnInit {
     }
   }
 
-  gotoAddTodo(){
+  gottoAddTodo(){
     this.navCtrl.navigateForward(['/add-todo']);
   }
 

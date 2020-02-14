@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'privacy', loadChildren: './privacy/privacy.module#PrivacyPageModule' },
   { path: 'house-select', loadChildren: './house-select/house-select.module#HouseSelectPageModule' },
   { path: 'todolist', loadChildren: './todolist/todolist.module#TodolistPageModule' },
+  { path: 'add-todo', loadChildren: './add-todo/add-todo.module#AddTodoPageModule'},
   { path: 'calander', loadChildren: './calander/calander.module#CalanderPageModule' },
   { path: 'forum', loadChildren: './forum/forum.module#ForumPageModule' },
   { path: 'shoppinglist', loadChildren: './shoppinglist/shoppinglist.module#ShoppinglistPageModule' },
@@ -15,8 +16,6 @@ const routes: Routes = [
   { path: 'add-house', loadChildren: './add-house/add-house.module#AddHousePageModule' },
   { path: 'house-details', loadChildren: './house-details/house-details.module#HouseDetailsPageModule' },
   { path: 'house-details:id', loadChildren: './house-details/house-details.module#HouseDetailsPageModule' },
-  { path: 'add-todo', loadChildren: './add-todo/add-todo.module#AddTodoPageModule' },
-
 ];
 
 @NgModule({
