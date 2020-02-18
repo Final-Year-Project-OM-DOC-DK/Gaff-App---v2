@@ -26,20 +26,12 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.7.1",
     "cordova-android": "8.1.0",
-<<<<<<< HEAD
     "core-js": "^2.6.11",
     "firebase": "^7.8.0",
     "firebaseui": "^4.4.0",
     "firebaseui-angular": "^4.0.1",
     "ionic2-calendar": "^0.5.8",
     "rxjs": "^6.5.4",
-=======
-    "core-js": "^2.5.4",
-    "firebase": "^7.2.2",
-    "firebaseui": "^4.2.0",
-    "firebaseui-angular": "^4.0.0",
-    "rxjs": "~6.5.1",
->>>>>>> 72c72c99577eb05b8266271c1fb7bc5eb2c34b93
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
   },
