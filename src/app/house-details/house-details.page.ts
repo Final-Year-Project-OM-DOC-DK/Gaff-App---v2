@@ -13,28 +13,23 @@ export class HouseDetailsPage implements OnInit {
   pages = [
     {
       title: 'To Do List',
-      url: 'todolist',
-      icon: 'checkbox-outline'
+      url: 'todolist'
     },
     {
       title: 'Calander',
-      url: 'calander',
-      icon: 'calendar'
+      url: 'calander'
     },
     {
       title: 'Shopping List',
-      url: 'shoppinglist',
-      icon: 'paper'
+      url: 'shoppinglist'
     },
     {
       title: 'Forum',
-      url: 'forum',
-      icon: 'chatboxes'
+      url: 'forum'
     },
     {
       title: 'Bills',
-      url: 'bills',
-      icon: 'logo-euro'
+      url: 'bills'
     }
   ];
 
