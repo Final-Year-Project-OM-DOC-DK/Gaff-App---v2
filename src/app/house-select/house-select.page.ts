@@ -31,7 +31,7 @@ export class HouseSelectPage implements OnInit {
   }
 
   //on select House from this page, navigates forward to the house details page, carrying the id from
-  //the selected house, so object is present on nect page
+  //the selected house, so object is present on next page
   goToHouseDetailsPage(house){
     this.navCtrl.navigateForward(['house-details:id', {id : house.id}]);
   }
