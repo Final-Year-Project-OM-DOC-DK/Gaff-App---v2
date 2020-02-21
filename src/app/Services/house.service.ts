@@ -8,17 +8,27 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import { AngularFirestoreCollection, AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 
+//interface for new house object. It will be created with all of these elements
 export interface House {
   id?: string,
   name: string,
   address: string,
   eircode: string,
-  members: string[],
-  bills: {},
-  calander: {},
-  forum: {},
-  shoppingList: {},
-  toDoList: {}
+  //members: string[],
+  //bills: {},
+  //calander: {},
+  //forum: {},
+  //shoppingList: {},
+  //toDoList: {}
+}
+
+//interface for calender event
+export interface calendarEvent{
+  title: '',
+  description: '',
+  startTime: Date,
+  endTime: Date,
+  allDay: false
 }
 
 @Injectable({
@@ -28,6 +38,8 @@ export class HouseService {
 
   private houses: Observable<House[]>;
   private houseCollection: AngularFirestoreCollection<House>;
+
+  private callendarEvents: Observable<calendarEvent[]>;
 
   constructor(private afs: AngularFirestore) {
     this.houseCollection = this.afs.collection<House>('house');
@@ -42,10 +54,13 @@ export class HouseService {
     );
   }
 
+
+  //***HOUSE FUNCTIONS */
+  //get all houses from DB
   getHouses(): Observable<House[]> {
     return this.houses;
   }
-
+  //get singular house from DB using ID
   getHouse(id: string): Observable<House> {
     return this.houseCollection.doc<House>(id).valueChanges().pipe(
       take(1), //takes one observable as there is no need to keep constantly updated
@@ -55,17 +70,39 @@ export class HouseService {
       })
     );
   }
-
+  //add house object to DB
   addHouse(house: House): Promise<DocumentReference> {
-    return this.houseCollection.add(house);
+   return this.houseCollection.add(house);
   }
-
+  //update main attribues of house object in DB
   updateHouse(house: House): Promise<void> {
     return this.houseCollection.doc(house.id).update({ name:house.name, address:house.address, eircode:house.eircode });
   }
-
+  //delete house from DB
   deleteHouse(id: string): Promise<void> {
     return this.houseCollection.doc(id).delete();
+  }
+
+  //***CALENDAR FUNCTIONS */
+
+  //function to add calendar event.
+  //HAVING .COLLECTION('CALENDAR').ADD - IF THERE IS NO COLLECTION IT WILL CREATE ONE, IF THERE IS IT WILL ADD TO IT
+  addToCalendar(calendarEvent: calendarEvent, id: string): Promise<DocumentReference>{
+    return this.houseCollection.doc(id).collection('calendar').add(calendarEvent);
+  }
+
+  //**TEST */
+  //function to retrieve all calender events from a single house
+  //so far getting objects when added. need to map them to display
+  getAllCalendarEvents(id : string){
+    this.houseCollection.doc(id).collection('calendar').snapshotChanges().subscribe(result =>{
+      console.log(result);
+    })
+
+
+    //this.afs.collection('house/{id}/calendar').snapshotChanges().subscribe(result =>{
+    //  console.log(result);
+    //})
   }
 
 }
