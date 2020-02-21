@@ -14,13 +14,13 @@ export class AddHousePage implements OnInit {
   house: House = {
   name: '',
   address: '',
-  eircode: '',
-  members: [],
-  bills: {},
-  calander: {},
-  forum: {},
-  shoppingList: {},
-  toDoList: {}
+  eircode: ''
+  //members: [],
+  //bills: {},
+  //calander: {},
+  //forum: {},
+  //shoppingList: {},
+  //toDoList: {}
   }
 
   constructor(private navCtrl : NavController,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import { HouseService, House } from '../Services/house.service';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-house-details',
@@ -10,6 +11,7 @@ import { HouseService, House } from '../Services/house.service';
 export class HouseDetailsPage implements OnInit {
 
   private house: House;
+  
   pages = [
     {
       title: 'To Do List',
@@ -47,12 +49,9 @@ export class HouseDetailsPage implements OnInit {
   //On initialisation of page, use url param (house id from previous page) to get house object from DB
   ngOnInit() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(id);
     if (id) {
       this.houseService.getHouse(id).subscribe(house => {
         this.house = house;
-        console.log(this.house);
-        console.log(this.house.address);
       });
     }
   }

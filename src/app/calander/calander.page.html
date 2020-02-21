@@ -7,39 +7,36 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
   <!-- Clickable card for adding a new event -->
   <ion-card>
     <ion-card-header tappable (click)="collapseCard = !collapseCard">
       <ion-card-title>New Event</ion-card-title>
+      <ion-card-subtitle>Click to Expand / Collapse</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content *ngIf="!collapseCard">
- 
       <ion-item>
-        <ion-input type="text" placeholder="Title" [(ngModel)]="event.title"></ion-input>
+        <ion-input type="text" placeholder="Title" [(ngModel)]="callendarEvent.title"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Description" [(ngModel)]="event.description"></ion-input>
+        <ion-input type="text" placeholder="Description" [(ngModel)]="callendarEvent.description"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Start</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="callendarEvent.startTime" [min]="minDate"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>End</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="callendarEvent.endTime" [min]="minDate"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>All Day?</ion-label>
-        <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="callendarEvent.allDay"></ion-checkbox>
       </ion-item>
-      <ion-button fill="outline" expand="block" (click)="addEvent()" [disabled]="event.title == ''">Add Event</ion-button>
- 
+      <ion-button fill="outline" expand="block" (click)="addEvent()" [disabled]="callendarEvent.title == ''">Add Event</ion-button>
     </ion-card-content>
   </ion-card>
-
-
 
   <!--imported calendar from https://www.npmjs.com/package/ionic2-calendar
 
