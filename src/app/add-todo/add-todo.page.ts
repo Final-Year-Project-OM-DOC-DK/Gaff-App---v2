@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import{NavController}from '@ionic/angular';
 import{ToastController} from '@ionic/angular';
+import { House, HouseService } from '../Services/house.service';
 
 @Component({
   selector: 'app-add-todo',
   templateUrl: './add-todo.page.html',
   styleUrls: ['./add-todo.page.scss'],
 })
+
+
+
 export class AddTodoPage implements OnInit {
 
   todo_title:string;
