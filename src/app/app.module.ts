@@ -18,6 +18,7 @@ import {environment} from 'src/environments/environment';
 
 //to use firestore DB
 import {AngularFirestoreModule, FirestoreSettingsToken} from '@angular/fire/firestore'
+import { NgCalendarModule } from 'ionic2-calendar';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -62,7 +63,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    NgCalendarModule
   ],
   providers: [
     StatusBar,

@@ -25,10 +25,13 @@ export class CalendarService {
   private house: Observable<House>;
 
 
-  calendarColection: AngularFirestoreCollection<calendarEvent>;
+  private callendarEvents: Observable<calendarEvent[]>;
+  private callendarCollection: AngularFirestoreCollection<calendarEvent>;
 
   constructor(houseService : HouseService,
               private afs: AngularFirestore) {
+
+                
                 //this.calendarColection = afs.collection('house').doc;
                }
 
