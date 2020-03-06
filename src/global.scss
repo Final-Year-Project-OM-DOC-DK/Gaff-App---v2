@@ -27,3 +27,19 @@
 
 //fireabse css file
 @import '~firebaseui/dist/firebaseui.css';
+
+//import fonts
+@font-face{
+    font-family: 'CalendarNote';
+    src: url(assets/fonts/CalendarNote.ttf)
+}
+@font-face{
+    font-family: 'CenturyGothicBold';
+    src: url(assets/fonts/CenturyGothicBold.ttf)
+}
+*{
+    font-family: 'CalendarNote';
+}
+*{
+    font-family: 'CenturyGothicBold';
+}

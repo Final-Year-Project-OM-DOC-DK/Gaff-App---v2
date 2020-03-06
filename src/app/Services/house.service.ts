@@ -107,7 +107,9 @@ export class HouseService {
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
+          //console.log(data);
           const id = a.payload.doc.id;
+          //console.log(id);
           return { id, ...data};
         });
       })

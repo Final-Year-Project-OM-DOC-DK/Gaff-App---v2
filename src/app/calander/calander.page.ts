@@ -3,6 +3,7 @@ import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { House, HouseService, calendarEvent } from '../Services/house.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { TestBed } from '@angular/core/testing';
 
 @Component({
   selector: 'app-calander',
@@ -16,6 +17,7 @@ export class CalanderPage implements OnInit {
 
   //source of stored events
   eventSource: Observable<calendarEvent[]>;
+  test: [];
 
   //both are being populated OnInit
   currentHouse : House;
@@ -69,8 +71,13 @@ export class CalanderPage implements OnInit {
       });
       //adds calendar events for this house to variable eventSource
     this.eventSource = this.houseService.getAllCalendarEvents(id);
+
+    //attempt to use for each to add to test array, so it is compatible with calendar
+    this.eventSource.forEach(function (calendarEvent){
+      console.log(calendarEvent);
+      //this.test.push(calendarEvent);
+    })
     }
-    
   }
 
   loadEvents(){
