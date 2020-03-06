@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <div class="titleIcon">
-      <img alt="logo" src ="assets/img/animatedLogo.gif" height="50px" width="120" />
+      <img alt="logo" src ="assets/img/logo.png" height="50px" width="80px" />
   </div>
   <ion-title>Gaff App</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content padding>
+<ion-content padding class="content">
   <!--fireabse UI-->
   <firebase-ui></firebase-ui>
 
@@ -20,11 +20,11 @@
 
 
   <!--sign out button and select house button only appear when a user is logged in / via *ngIF-->
-  <ion-button *ngIf="afAuth.auth.currentUser" color="tertiary" expand="block" shape="round" (click)="goToSelectHousePage()">Select House
+  <ion-button *ngIf="afAuth.auth.currentUser" class="selectButton" expand="block" shape="round" (click)="goToSelectHousePage()">Select House
     <ion-icon padding name="home" item-right></ion-icon>
   </ion-button>
 
-  <ion-button *ngIf="afAuth.auth.currentUser" color="danger" expand="block" shape="round" (click)="signOut()">Sign Out
+  <ion-button *ngIf="afAuth.auth.currentUser" class="signOutButton" expand="block" shape="round" (click)="signOut()">Sign Out
       <ion-icon padding name="exit" item-right></ion-icon>
   </ion-button>
 
