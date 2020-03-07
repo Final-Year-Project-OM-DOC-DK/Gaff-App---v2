@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import { HouseService, House } from '../Services/house.service';
 import { identifierModuleUrl } from '@angular/compiler';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-house-details',
@@ -16,22 +17,27 @@ export class HouseDetailsPage implements OnInit {
     {
       title: 'To Do List',
       url: 'todolist',
+      click: 'goToDoPage()'
     },
     {
-      title: 'Calander',
+      title: 'Calendar',
       url: 'calander',
+      click: 'goCalendarPage()'
     },
     {
       title: 'Shopping List',
       url: 'shoppinglist',
+      click: 'goShoppingPage()'
     },
     {
       title: 'Forum',
       url: 'forum',
+      click: 'goForumPage()'
     },
     {
       title: 'Bills',
       url: 'bills',
+      click: 'goBillsPage()'
     }
   ];
 
@@ -39,7 +45,8 @@ export class HouseDetailsPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private houseService: HouseService,
-    private route: Router) {
+    private route: Router,
+    public navCtrl: NavController) {
 
     this.route.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
@@ -54,6 +61,22 @@ export class HouseDetailsPage implements OnInit {
         this.house = house;
       });
     }
+  }
+
+  goToDoPage(){
+   this.navCtrl.navigateForward('todolist');
+  }
+  goCalendarPage(){
+    this.navCtrl.navigateForward('calander');
+  }
+  goShoppingPage(){
+    this.navCtrl.navigateForward('shoppinglist');
+  }
+  goForumPage(){
+    this.navCtrl.navigateForward('forum');
+  }
+  goBillsPage(){
+    this.navCtrl.navigateForward('bills');
   }
 
 }

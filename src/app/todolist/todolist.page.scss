@@ -7,17 +7,20 @@ ion-title {
     height: 100%;
     text-align: center;
     font-family: 'CalendarNote';
-    font-size: 26px;
-    color: White;
+    font-size: 32px;
+    color: black;
+  }
+  ion-content{
+    --background:url('../../assets/img/concreteBackground.jpg');
   }
 
   ion-toolbar{
-    --background: linear-gradient(110deg, #7CEA9C 0%, #232ED1 35%); //#55D6BE 100%);
+    --background: linear-gradient(110deg, #7CEA9C 0%, #232ED1 35%);
     color: white;
   }
 
-  ion-button{
-    --background: linear-gradient(110deg,  #7CEA9C 0%, #232ED1 35%);
+  ion-fab-button{
+    --background: linear-gradient(120deg,  #7CEA9C 20%, #232ED1 70%);
   }
 
   

@@ -13,6 +13,7 @@
 
 <ion-content padding>
   <!--inputs for house details-->
+  <ion-card>
  <ion-item>
    <ion-label position="stacked">Name</ion-label>
    <ion-input [(ngModel)]="house.name"></ion-input>
@@ -25,6 +26,9 @@
       <ion-label position="stacked">Eircode</ion-label>
       <ion-input [(ngModel)]="house.eircode"></ion-input>
     </ion-item>
+
+  </ion-card>
+    <img src="../../assets/img/logo.png">
 </ion-content>
 
 
@@ -32,6 +36,7 @@
   <ion-toolbar color="success">
     <ion-button expand="full" fill="clear" color="light" (click)="addHouse()">
       Add House
+      <ion-icon name="add" slot="end" class="addIcon" size="large"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-footer>

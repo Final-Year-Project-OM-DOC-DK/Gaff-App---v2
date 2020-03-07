@@ -11,11 +11,11 @@
   <firebase-ui></firebase-ui>
 
 
-<ion-card padding>
+<ion-card padding *ngIf="afAuth.auth.currentUser">
   <!--current user object is null if user is logged out, ng if displays email if user is logged in-->
-  <h5 *ngIf="afAuth.auth.currentUser">Welcome {{afAuth.auth.currentUser.email}}</h5>
+  <h5>Welcome {{afAuth.auth.currentUser.email}}</h5>
 
-  <p *ngIf="afAuth.auth.currentUser">If you want to select your house, or add a new house, please press the house select button</p>
+  <p>If you want to select your house, or add a new house, please press the house select button</p>
 </ion-card>
 
 
@@ -27,5 +27,7 @@
   <ion-button *ngIf="afAuth.auth.currentUser" class="signOutButton" expand="block" shape="round" (click)="signOut()">Sign Out
       <ion-icon padding name="exit" item-right></ion-icon>
   </ion-button>
+
+  <img *ngIf="afAuth.auth.currentUser" src="../../assets/img/logo.png">
 
 </ion-content>
