@@ -12,4 +12,8 @@ export class BillsPage implements OnInit {
   ngOnInit() {
   }
 
+  goToAddBillPage(){
+    
+  }
+
 }

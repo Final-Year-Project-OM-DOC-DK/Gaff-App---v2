@@ -1,12 +1,57 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>bills</ion-title>
+    <ion-fab-button class="addButton" slot="end" size="small" (click)="goToAddBillPage()">
+      <ion-icon name="add" position="centre"></ion-icon>
+    </ion-fab-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+      <ion-card>
+        <ion-icon name="list" size="large" slot="end"></ion-icon>
+        <ion-header>
+          <ion-card-title>Electricity</ion-card-title>
+            <ion-card-subtitle>Due 07/03/20 <br> €56.75 each</ion-card-subtitle>
+        </ion-header>
+        <ion-card-content>
+          <ul>
+            <li>
+              John <ion-checkbox checked={true}></ion-checkbox>
+            </li>
+            <li>
+              Alice <ion-checkbox></ion-checkbox>
+            </li>
+            <li>
+              Carl <ion-checkbox></ion-checkbox>
+            </li>
+        </ul>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-icon name="list" size="large" slot="end"></ion-icon>
+        <ion-header>
+          <ion-card-title>Rent</ion-card-title>
+            <ion-card-subtitle>Due 30/03/20 <br> €410 each</ion-card-subtitle>
+        </ion-header>
+        <ion-card-content>
+          <ul>
+            <li>
+              John <ion-checkbox ></ion-checkbox>
+            </li>
+            <li>
+              Alice <ion-checkbox checked={true}></ion-checkbox>
+            </li>
+            <li>
+              Carl <ion-checkbox checked={true}></ion-checkbox>
+            </li>
+        </ul>
+        </ion-card-content>
+      </ion-card>
+
 
 </ion-content>

@@ -41,19 +41,26 @@ ion-toolbar{
 
   ion-card{
     background-color:transparentize($color:#55D6BE, $amount: 0.2);
-    color: white;
+    color: black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
   ion-item{
       --background: #8CD1FF;
       font-size: large;
+      padding-top: 0px;
+     // border-top-left-radius: 30px;
+     // border-bottom-right-radius: 30px;
   }
   .listIcon{
       padding-right: 10px;
       color: white;
   }
 
-.list{
+ion-list{
     --background: #8CD1FF;
     color: #55D6BE;
-    margin-top: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 0px;
 }
