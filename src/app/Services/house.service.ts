@@ -15,7 +15,7 @@ export interface House {
   name: string,
   address: string,
   eircode: string,
-  //members: string[],
+  members: string[],
   //bills: {},
   //calander: {},
   //forum: {},
@@ -55,6 +55,26 @@ export class HouseService {
         });
       })
     );
+  }
+
+  //function to retrieve user from DB
+  getUser(){
+    let user = firebase.auth().currentUser;
+    if (user){
+      return user;
+    } else{
+      console.log("no user found");
+    }
+  }
+
+  //function to get current user id
+  getUserId(){
+    let user = firebase.auth().currentUser;
+    if (user){
+      return user.uid;
+    } else{
+      console.log("no user found");
+    }
   }
 
 
@@ -97,19 +117,12 @@ export class HouseService {
   //function to retrieve all calender events from a single house
   //so far getting objects when added. need to map them to display
   getAllCalendarEvents(id : string){
-    //this.houseCollection.doc(id).collection('calendar').snapshotChanges().subscribe(result =>{
-    // console.log(result);
-    // return result;
-    // ABOVE WAY GOT BACK SETS OF DATA WITH NO VALUES
-    //TRYING TO DO IT THE SAME WAY AS THE CONSTRUCTOR IN THIS SERVICE
     this.callendarCollection = this.afs.collection('house').doc(id).collection<calendarEvent>('calendar');
     this.callendarEvents = this.callendarCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
-          //console.log(data);
           const id = a.payload.doc.id;
-          //console.log(id);
           return { id, ...data};
         });
       })

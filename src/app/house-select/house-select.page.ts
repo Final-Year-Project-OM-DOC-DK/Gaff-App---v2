@@ -23,6 +23,7 @@ export class HouseSelectPage implements OnInit {
 
   ngOnInit() {
     this.houses = this.houseService.getHouses();
+    console.log(this.houseService.getUser().uid);
   }
 
   //function to navigate to add-house page
