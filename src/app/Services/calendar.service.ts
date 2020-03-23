@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
 
 //interface for object to be stored
 export interface calendarEvent{
-      title: '',
-      description: '',
-      startTime: Date,
-      endTime: Date,
-      allDay: false
+    title: '',
+    description: '',
+    startTime: Date,
+    endTime: Date,
+    allDay: false
 }
 
 

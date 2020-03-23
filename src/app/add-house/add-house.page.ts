@@ -16,12 +16,7 @@ export class AddHousePage implements OnInit {
   name: '',
   address: '',
   eircode: '',
-  members: [],
-  //bills: {},
-  //calander: {},
-  //forum: {},
-  //shoppingList: {},
-  //toDoList: {}
+  members: []
   }
 
   constructor(private navCtrl : NavController,
@@ -30,18 +25,17 @@ export class AddHousePage implements OnInit {
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
 
-  //on initialisation get current usr id, to be used as the first "member" of the house
   ngOnInit() {
-    let id = this.houseService.getUserId();
-    console.log(id);
-    this.house.members.push(id);
   }
 
-  //calls service to add house with details to Firebase DB. 
+  //Adds current users UID into string array - members
+  //Calls service to add house with details to Firebase DB. 
+  //Toast stuff
   addHouse(){
+    let id = this.houseService.getUserId();
+    this.house.members.push(id);
     this.houseService.addHouse(this.house).then(() => {
       this.router.navigateByUrl('/');
-      //toast stuff
       this.showToast('House Added');
     }, err => {
       this.showToast('ERROR: house could not be added');
@@ -49,7 +43,7 @@ export class AddHousePage implements OnInit {
   }
 
 
-  //function to create toast
+  //Function to create toast
   showToast(msg){
     this.toastCtrl.create({
       message: msg,

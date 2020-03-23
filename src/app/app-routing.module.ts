@@ -15,8 +15,9 @@ const routes: Routes = [
   { path: 'bills', loadChildren: './bills/bills.module#BillsPageModule' },
   { path: 'add-house', loadChildren: './add-house/add-house.module#AddHousePageModule' },
   { path: 'house-details', loadChildren: './house-details/house-details.module#HouseDetailsPageModule' },
-  { path: 'house-details:id', loadChildren: './house-details/house-details.module#HouseDetailsPageModule' },  { path: 'add-tolist', loadChildren: './add-tolist/add-tolist.module#AddTolistPageModule' },
-
+  { path: 'house-details:id', loadChildren: './house-details/house-details.module#HouseDetailsPageModule' },
+  { path: 'add-tolist', loadChildren: './add-tolist/add-tolist.module#AddTolistPageModule' },
+  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' }
 ];
 
 @NgModule({

@@ -38,6 +38,10 @@ export class HouseDetailsPage implements OnInit {
       title: 'Bills',
       url: 'bills',
       click: 'goBillsPage()'
+    },
+    {
+      title: 'Settings',
+      url: 'settings'
     }
   ];
 

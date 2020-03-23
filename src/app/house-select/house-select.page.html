@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <!--back button on top left of toolbar-->
+    <!--Back button on top left of toolbar-->
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
       <!--Add button to right of toolbar. Goes to Add House page-->
@@ -14,10 +14,10 @@
 
 <ion-content padding>
 <ion-card>
-  <ion-list>
-    <!--has to be async in order to deal with observables-->
-    <!--router link to be used to navigate to next page once house is clicked-->
-    <ion-item button *ngFor="let house of (houses | async)" (click)="goToHouseDetailsPage(this.house)">
+  <ion-list *ngFor="let house of (houses | async)">
+    <!--Has to be async in order to deal with observables. House of houses iterates through the DB house objects-->
+    <!--Click function brings user foward to details page while carying house info with it-->
+    <ion-item button (click)="goToHouseDetailsPage(this.house)">
       <ion-icon class="listIcon" item-left name="exit"></ion-icon>
       {{ house.name }}
     </ion-item>

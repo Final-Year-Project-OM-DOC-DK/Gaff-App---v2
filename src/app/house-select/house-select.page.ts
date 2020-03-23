@@ -23,16 +23,16 @@ export class HouseSelectPage implements OnInit {
 
   ngOnInit() {
     this.houses = this.houseService.getHouses();
-    console.log(this.houseService.getUser().uid);
+    let currentUserId = this.houseService.getUser().uid;
   }
 
-  //function to navigate to add-house page
+  //Function to navigate to add-house page
   goToAddPage(){
     this.navCtrl.navigateForward('add-house');
   }
 
-  //on select House from this page, navigates forward to the house details page, carrying the id from
-  //the selected house, so object is present on next page
+  //On select House from this page, navigates forward to the house details page, carrying the id from
+  //The selected house, so object is present on next page
   goToHouseDetailsPage(house){
     this.navCtrl.navigateForward(['house-details:id', {id : house.id}]);
   }
