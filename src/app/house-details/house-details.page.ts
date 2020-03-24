@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import { HouseService, House } from '../Services/house.service';
 import { identifierModuleUrl } from '@angular/compiler';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-house-details',
@@ -16,28 +16,23 @@ export class HouseDetailsPage implements OnInit {
   pages = [
     {
       title: 'To Do List',
-      url: 'todolist',
-      click: 'goToDoPage()'
+      url: 'todolist'
     },
     {
       title: 'Calendar',
-      url: 'calander',
-      click: 'goCalendarPage()'
+      url: 'calander'
     },
     {
       title: 'Shopping List',
-      url: 'shoppinglist',
-      click: 'goShoppingPage()'
+      url: 'shoppinglist'
     },
     {
       title: 'Forum',
-      url: 'forum',
-      click: 'goForumPage()'
+      url: 'forum'
     },
     {
       title: 'Bills',
-      url: 'bills',
-      click: 'goBillsPage()'
+      url: 'bills'
     },
     {
       title: 'Settings',
@@ -50,10 +45,11 @@ export class HouseDetailsPage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private houseService: HouseService,
     private route: Router,
-    public navCtrl: NavController) {
+    public navCtrl: NavController,
+    public menuCtrl : MenuController) {
 
     this.route.events.subscribe((event: RouterEvent) => {
-      this.selectedPath = event.url;
+     this.selectedPath = event.url;
     });
   }//end constructor
 
@@ -67,20 +63,8 @@ export class HouseDetailsPage implements OnInit {
     }
   }
 
-  goToDoPage(){
-   this.navCtrl.navigateForward('todolist');
-  }
-  goCalendarPage(){
-    this.navCtrl.navigateForward('calander');
-  }
-  goShoppingPage(){
-    this.navCtrl.navigateForward('shoppinglist');
-  }
-  goForumPage(){
-    this.navCtrl.navigateForward('forum');
-  }
-  goBillsPage(){
-    this.navCtrl.navigateForward('bills');
+  refresh(){
+    this.menuCtrl.isEnabled();
   }
 
 }

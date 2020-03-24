@@ -3,6 +3,7 @@ import { NavController, ToastController } from '@ionic/angular';
 import { House, HouseService } from '../Services/house.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { identifierModuleUrl } from '@angular/compiler';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-house',
@@ -16,8 +17,13 @@ export class AddHousePage implements OnInit {
   name: '',
   address: '',
   eircode: '',
-  members: []
+  members: ['ossian','moore']
   }
+
+  currentUserId = this.houseService.getUserId();
+  currentUser = this.houseService.getUser();
+
+  memberList: any = [];
 
   constructor(private navCtrl : NavController,
               private houseService: HouseService,
@@ -26,20 +32,30 @@ export class AddHousePage implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    //For loop push house members
+    for (let i=0; i<this.house.members.length; i++){
+      this.memberList.push(this.house.members[i]); //[i].getUser(this.house.members[i].uid);
+      console.log(this.house.members[i])
+    }
   }
 
   //Adds current users UID into string array - members
   //Calls service to add house with details to Firebase DB. 
   //Toast stuff
   addHouse(){
-    let id = this.houseService.getUserId();
-    this.house.members.push(id);
+    this.house.members.push(this.currentUserId);
     this.houseService.addHouse(this.house).then(() => {
       this.router.navigateByUrl('/');
       this.showToast('House Added');
     }, err => {
       this.showToast('ERROR: house could not be added');
     });
+  }
+
+  //Fucntion to search users
+  //add parameter for (user.email)
+  searchUser(){
+    this.houseService.searchUser();
   }
 
 

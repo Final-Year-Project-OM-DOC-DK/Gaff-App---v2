@@ -1,3 +1,4 @@
+<ion-split-pane>
 
 <ion-menu contentId="content">
   
@@ -11,7 +12,7 @@
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
-            <ion-item [routerLink]="p.url" [routerDirection]="forward">
+            <ion-item [routerLink]="p.url" [routerDirection]="root" [class.active-item]="selectedPath === p.url">
               {{ p.title }}
               <ion-icon name="arrow-forward" class="menuIcon"></ion-icon>
             </ion-item>
@@ -22,5 +23,7 @@
 </ion-menu>
 
 <ion-router-outlet id="content" main></ion-router-outlet>
+
+</ion-split-pane>
 
  

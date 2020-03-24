@@ -8,6 +8,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import { AngularFirestoreCollection, AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { promise } from 'protractor';
 
 //Interface for new house object. It will be created with all of these elements
 export interface House {
@@ -38,6 +39,9 @@ export class HouseService {
   private callendarEvents: Observable<calendarEvent[]>;
   private callendarCollection: AngularFirestoreCollection<calendarEvent>;
 
+  //test to see did email work, worked when correct, worked when incorrect
+  public email = 'ossian@test.ie';
+
   //Initialise firebase and get collection from DB
   constructor(private afs: AngularFirestore) {
     this.houseCollection = this.afs.collection<House>('house');
@@ -60,6 +64,22 @@ export class HouseService {
     } else{
       console.log("no user found");
     }
+  }
+
+
+  //funntion to search for user using email
+  searchUser(){
+    firebase.auth().fetchSignInMethodsForEmail(this.email).then(results => {
+      if (results.length === 1){
+        //this email is was found
+        console.log('this email is was found')
+      }
+      else{
+        console.log('no user with this email')
+        //no user with this email / add toast or alert
+      }
+    });
+
   }
 
   //Function to get current user id

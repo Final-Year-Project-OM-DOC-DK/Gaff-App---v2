@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { House, HouseService } from '../Services/house.service';
 
@@ -19,7 +19,8 @@ export class SettingsPage implements OnInit {
   constructor(private navCtrl: NavController,
               private router: Router,
               private activatedRoute : ActivatedRoute,
-              private houseService : HouseService) { }
+              private houseService : HouseService,
+              public alertController : AlertController) { }
 
   //On init, split url to get id of house            
   ngOnInit() {
@@ -37,11 +38,31 @@ export class SettingsPage implements OnInit {
   }//end if
  }//end on init
 
+ //Function for alert
+
 
  //Function to delete House
- deleteHouse(){
-  this.houseService.deleteHouse(this.currentHouseId);
-  this.navCtrl.navigateBack('house-select');
+ async deleteHouse(){
+
+  const alert = await this.alertController.create({
+    message: 'Are you sure you want to permanently delete this house?',
+    buttons: [
+      {
+        text: 'No',
+        handler: () => {
+        return;
+        }
+      },
+      {
+        text: 'Yes',
+        handler: () => {
+          this.houseService.deleteHouse(this.currentHouseId);
+          this.navCtrl.navigateBack('house-select');
+        }
+      }
+    ]
+  });
+ await alert.present();
  }
 
 

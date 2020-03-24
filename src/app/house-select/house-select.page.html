@@ -12,16 +12,22 @@
   </ion-toolbar>
 </ion-header>
 
+<!--For loop to asynchronously load. for loop to iterate through array of members in each house. If current user id = stored member id in house, then display-->
 <ion-content padding>
-<ion-card>
-  <ion-list *ngFor="let house of (houses | async)">
+<ion-card *ngFor="let house of (houses | async)">
+  <div *ngFor="let member of house.members">
+    <div *ngIf="this.userId === member ">
+  <ion-list>
     <!--Has to be async in order to deal with observables. House of houses iterates through the DB house objects-->
     <!--Click function brings user foward to details page while carying house info with it-->
     <ion-item button (click)="goToHouseDetailsPage(this.house)">
       <ion-icon class="listIcon" item-left name="exit"></ion-icon>
       {{ house.name }}
+      {{member}}
     </ion-item>
   </ion-list>
+</div>
+</div>
 </ion-card>
 <ion-card>
   <p padding>Please select a house from the list above, or add a new house</p>
