@@ -8,16 +8,21 @@ ion-title {
     text-align: center;
     font-family: 'CalendarNote';
     font-size: 26px;
-    color: White;
+    color: white;
   }
 
   ion-toolbar{
-    --background: linear-gradient(110deg, #7CEA9C 0%, #232ED1 35%); //#55D6BE 100%);
+    --background: linear-gradient(110deg, #7CEA9C 10%, #232ED1 35%); //#55D6BE 100%);
     color: white;
   }
 
   ion-button{
-    --background: linear-gradient(110deg,  #7CEA9C 0%, #232ED1 35%);
+    --background: linear-gradient(110deg,  #7CEA9C 10%, #232ED1 35%);
   }
 
-  
+  ion-label{
+    font-family: 'GothicCenturyBold';
+  }
+
+
+

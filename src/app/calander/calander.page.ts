@@ -1,21 +1,23 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, DebugElement } from '@angular/core';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { House, HouseService, calendarEvent } from '../Services/house.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-
+import { TestBed } from '@angular/core/testing';
 
 @Component({
   selector: 'app-calander',
   templateUrl: './calander.page.html',
   styleUrls: ['./calander.page.scss'],
 })
+
 export class CalanderPage implements OnInit {
   //sets minimum date that can be used - eg: now, today
   minDate = new Date().toISOString();
 
   //source of stored events
-  public eventSource: Observable<calendarEvent[]>;
+  eventSource: Observable<calendarEvent[]>;
+  test: [];
 
   //both are being populated OnInit
   currentHouse : House;
@@ -39,18 +41,20 @@ export class CalanderPage implements OnInit {
 
   viewTitle = '';
 
+
   //static set to false, so that component ALWAYS gets initialized after the view initialization
-  @ViewChild(CalendarComponent, {static:false}) myCal: CalendarComponent;
+  @ViewChild(CalendarComponent, {static:true}) myCal: CalendarComponent;
 
   constructor(private activatedRoute: ActivatedRoute,
               private route : Router,
-              private houseService: HouseService
+              private houseService: HouseService,
               ) {
   }
 
   ngOnInit(){
     //call on initialising to give clear event inputs
     this.resetEvent();
+    //this.myCal.loadEvents();
 
     //this disects the url to give me the ID needed to get the house object
     let id1 = this.route.url.split('id=');
@@ -58,23 +62,33 @@ export class CalanderPage implements OnInit {
     let id3 = id2.split('/');
     let id = id3[0].toString();
 
-    this.houseService.getAllCalendarEvents(id);
-
     //gets house object through id and sets it to 'currentHouse'. Sets current house id outside of this function.
     this.houseService.getHouse(id);
     if (id){
       this.houseService.getHouse(id).subscribe(house => {
       this.currentHouse = house;
       this.currentHouseId = id;
-      })
+      });
+      //adds calendar events for this house to variable eventSource
+    this.eventSource = this.houseService.getAllCalendarEvents(id);
+
+    //attempt to use for each to add to test array, so it is compatible with calendar
+    this.eventSource.forEach(function (calendarEvent){
+      console.log(calendarEvent);
+      //this.test.push(calendarEvent);
+    })
     }
-
-
-
   }
 
-
-
+  loadEvents(){
+    if(this.eventSource){
+      this.myCal.loadEvents();
+      console.log("loaded events");
+    }
+    else{
+      console.log("eventSource was empty");
+    }
+  }
 
   //once event is submitted, all values are reset, times are set to current time
   resetEvent(){
@@ -85,6 +99,18 @@ export class CalanderPage implements OnInit {
       endTime: new Date(),
       allDay: false
     };
+  }
+
+  changeMode(mode){
+    this.calendar.mode = mode;
+  }
+  back(){
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slidePrev();
+  }
+  next(){
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slideNext();
   }
 
   addEvent(){
@@ -108,20 +134,26 @@ export class CalanderPage implements OnInit {
     eventCopy = this.callendarEvent;
     this.houseService.addToCalendar(this.callendarEvent, this.currentHouseId);
     //reload calendar
-    //this.myCal.loadEvents();
+    this.myCal.loadEvents();
     //reset fields on add event
-    //this.resetEvent();
-    
+    this.resetEvent();
+  }
+
+  today(){
+    this.calendar.currentDate = new Date();
   }
 
   onEventSelected(){
-
+  
   }
-  onViewTitleChanged(){
-
+  onViewTitleChanged(title){
+    this.viewTitle = title;
   }
-  onTimeSelected(){
-
+  onTimeSelected(ev){
+    let selected = new Date(ev.selectedTime);
+    this.callendarEvent.startTime = selected;
+    selected.setHours(selected.getHours() + 1);
+    this.callendarEvent.endTime = selected;
   }
 
 

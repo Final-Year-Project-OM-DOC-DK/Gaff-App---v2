@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NavController} from '@ionic/angular';
+import {NavController} from "@ionic/angular";
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.page.html',
@@ -11,7 +11,6 @@ export class TodolistPage implements OnInit {
 
   ngOnInit() {
   }
-
   gotoAddToDo(){
     this.navCtrl.navigateForward(['/add-todo']);
   }
