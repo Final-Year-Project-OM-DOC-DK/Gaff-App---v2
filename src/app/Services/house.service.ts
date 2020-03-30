@@ -23,8 +23,8 @@ export interface House {
 export interface calendarEvent{
   title: '',
   description: '',
-  startTime: Date,
-  endTime: Date
+  startTime: '',
+  endTime: '',
   allDay: false
 }
 
@@ -114,7 +114,7 @@ export class HouseService {
   }
   //Update main attribues of house object in DB
   updateHouse(house: House): Promise<void> {
-    return this.houseCollection.doc(house.id).update({ name:house.name, address:house.address, eircode:house.eircode });
+    return this.houseCollection.doc(house.id).update({ name:house.name, address:house.address, eircode:house.eircode, members:house.members});
   }
   //Delete house from DB
   deleteHouse(id: string): Promise<void> {
