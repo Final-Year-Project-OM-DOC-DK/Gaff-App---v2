@@ -139,8 +139,8 @@ export class CalanderPage implements OnInit {
       eventCopy.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate() + 1));
     }
     //push event to event source array
-    //  this.eventSource.push(eventCopy);
-    //
+    console.log(eventCopy);
+    this.eventSource.push(eventCopy);
     //add event to FB collection - working
     this.calendarService.updateCalendarCollection(eventCopy, this.currentHouseId);
     //reload calendar
@@ -156,15 +156,22 @@ export class CalanderPage implements OnInit {
   //map to evenSource[]
   loadCalenderEvents(){
     let calendarCollection = this.calendarService.getAllCalendarEvents(this.currentHouseId);
-    calendarCollection.forEach(events => {
-      this.eventSource.push(events);
+    calendarCollection.subscribe(events => {
+      this.eventSource = events;
+      for (let i=0; i<=this.eventSource.length; i++){
+        let a = this.eventSource[i].startTime;
+        let b = this.eventSource[i].endTime;
+        this.eventSource[i].startTime = new Date(a);
+        this.eventSource[i].endTime = new Date(b);
+        console.log(a,b);
+        this.eventSource.push(event);
+        //delete this.eventSource[i].id;
+      }
+      console.log(this.eventSource);
+      return this.eventSource;
     });
-    console.log(this.eventSource);
     
-    this.eventSource[0].forEach(element => {
-      this.test.push(element);
-    });
-    console.log(this.test);
+    
   }
 
 

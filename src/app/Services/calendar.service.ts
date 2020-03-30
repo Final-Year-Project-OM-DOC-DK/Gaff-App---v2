@@ -68,6 +68,8 @@ export class CalendarService {
 
   //function to update DB 
   updateCalendarCollection(event, id:string){
-    return this.houseCollection.doc(id).collection('calendar').add(event);
+    //return this.houseCollection.doc(id).collection('calendar');
+    //try to replace array
+    return this.houseCollection.doc(id).set('calendar');
   }
 }

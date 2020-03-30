@@ -23,6 +23,9 @@ export class HomePage {
   goToSelectHousePage(){
     this.navCtrl.navigateForward('house-select');
   }
+  goToProfilePage(){
+    this.navCtrl.navigateForward('profile');
+  }
 
 
 

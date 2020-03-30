@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <!--Back button on top left of toolbar-->
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+      <!--Add button to right of toolbar. Goes to Add House page-->
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+<!--If the user has a profile pic, display it, otherwise display default profile avatar-->
+    <ion-card-header *ngIf="currentUser.photoURL == null">
+      <ion-avatar>
+        <img src="../../assets/img/default.png">
+      </ion-avatar>
+    </ion-card-header>
+    <ion-card-header *ngIf="currentUser.photoURL">
+      <ion-avatar>
+        <img src="{{currentUser.photoURL}}">
+      </ion-avatar>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          User Name:
+        </ion-item>
+        <ion-item>
+          Email: {{currentUser.email}}
+        </ion-item>
+        <ion-item>
+          Phone Number:
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>
