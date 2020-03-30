@@ -1,0 +1,46 @@
+
+ion-title{
+    font-family: 'CalendarNote';
+    font-size: 30px;
+    color: #8CD1FF;
+    text-align: center;
+}
+
+ion-toolbar{
+    --background: linear-gradient(90deg, #8CD1FF 0%, #232ED1 60%);
+  }
+
+.todayButton{
+    --background: #55D6BE;
+    color: white;
+    opacity: 0.8;
+    font-family: 'GothicCenturyBold';
+}
+
+ion-content{
+    font-family: 'GothicCenturyBold';
+    --background: url('../../assets/img/concreteBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  ion-card{
+    background-color:transparentize($color:#55D6BE, $amount: 0.2);
+    font-family: 'GothicCenturyBold';
+  }
+
+  ion-item{
+    --background: #8CD1FF;
+    border-radius: 10px;
+    font-family: 'GothicCenturyBold';
+  }
+
+  .addEventButton{
+      --backround:#232ED1;
+      color: white;
+      font-family: 'GothicCenturyBold';
+  }
+
+  .cal{
+      --background:yellow;
+  }

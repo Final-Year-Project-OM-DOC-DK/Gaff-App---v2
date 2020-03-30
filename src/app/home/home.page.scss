@@ -10,21 +10,35 @@ ion-title {
     font-size: 26px;
     color: black;
   }
-
   ion-card{
-    background-color:transparentize($color:#FF8811, $amount: 0);
+    background-color:transparentize($color:#55D6BE, $amount: 0.2);
+    color: black;
   }
-
   ion-content{
     font-family: 'GothicCenturyBold';
+    --background: url('../../assets/img/concreteBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
-
   ion-toolbar{
-    --background: linear-gradient(90deg, #7CEA9C 0%, #8CD1FF 35%); //#55D6BE 100%);
+    --background: linear-gradient(90deg, #8CD1FF 0%, #232ED1 60%);
     color: white;
   }
+  .selectButton{
+    color: #55D6BE;
+    --background: #2E5EAA;
+  }
+  .signOutButton{
+    color: #2E5EAA;
+    --background: #55D6BE
+  }
+  h5{
+    text-align: center;
+  }
+  p{
+    color:#FFFAF0;
+  }
 
-  
 
 
   

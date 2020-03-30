@@ -37,9 +37,23 @@
     font-family: 'CenturyGothicBold';
     src: url(assets/fonts/CenturyGothicBold.ttf)
 }
+@font-face{
+    font-family: 'Typewriter';
+    src: url(assets/fonts/Typewriter.ttf)
+}
+@font-face{
+    font-family: 'Typebold';
+    src: url(assets/fonts/Typebold.otf)
+}
 *{
     font-family: 'CalendarNote';
 }
 *{
     font-family: 'CenturyGothicBold';
 }
+// *{
+//     font-family: 'Typewriter';
+// }
+// *{
+//     font-family: 'Typebold';
+// }

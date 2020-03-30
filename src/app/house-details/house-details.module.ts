@@ -17,7 +17,8 @@ const routes: Routes = [
       { path: 'calander', loadChildren: '../calander/calander.module#CalanderPageModule' },
       { path: 'forum', loadChildren: '../forum/forum.module#ForumPageModule' },
       { path: 'shoppinglist', loadChildren: '../shoppinglist/shoppinglist.module#ShoppinglistPageModule' },
-      { path: 'bills', loadChildren: '../bills/bills.module#BillsPageModule' }
+      { path: 'bills', loadChildren: '../bills/bills.module#BillsPageModule' },
+      { path: 'settings', loadChildren: '../settings/settings.module#SettingsPageModule' },
     ]
   },
   {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DebugEventListener } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 
@@ -16,6 +16,7 @@ import { HouseDetailsPage } from '../house-details/house-details.page';
 export class HouseSelectPage implements OnInit {
 
   public houses: Observable<House[]>;
+  public userId;
 
   constructor(public navCtrl: NavController,
               private houseService: HouseService,
@@ -23,15 +24,16 @@ export class HouseSelectPage implements OnInit {
 
   ngOnInit() {
     this.houses = this.houseService.getHouses();
+    this.userId = this.houseService.getUser().uid.toString();
   }
 
-  //function to navigate to add-house page
+  //Function to navigate to add-house page
   goToAddPage(){
     this.navCtrl.navigateForward('add-house');
   }
 
-  //on select House from this page, navigates forward to the house details page, carrying the id from
-  //the selected house, so object is present on next page
+  //On select House from this page, navigates forward to the house details page, carrying the id from
+  //The selected house, so object is present on next page
   goToHouseDetailsPage(house){
     this.navCtrl.navigateForward(['house-details:id', {id : house.id}]);
   }
