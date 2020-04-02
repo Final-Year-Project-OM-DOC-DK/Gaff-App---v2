@@ -24,6 +24,10 @@
     <ion-icon padding name="home" item-right></ion-icon>
   </ion-button>
 
+  <ion-button *ngIf="afAuth.auth.currentUser" class="profileButton" expand="block" shape="round" (click)="goToProfilePage()">My Profile
+    <ion-icon padding name="contact" item-right></ion-icon>
+  </ion-button>
+
   <ion-button *ngIf="afAuth.auth.currentUser" class="signOutButton" expand="block" shape="round" (click)="signOut()">Sign Out
       <ion-icon padding name="exit" item-right></ion-icon>
   </ion-button>
