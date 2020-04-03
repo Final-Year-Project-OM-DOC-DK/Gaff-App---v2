@@ -25,13 +25,25 @@
 
     <ion-card-content>
       <ion-list>
+
         <ion-item>
-          User Name:
+          <ion-button slot="end" (click)="editUsername()">
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+          {{currentUser.displayName}}
         </ion-item>
+
         <ion-item>
-          Email: {{currentUser.email}}
+          <ion-button slot="end" (click)="editEmail()">
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+          {{currentUser.email}}
         </ion-item>
+
         <ion-item>
+          <ion-button slot="end" (click)="editPhone()">
+            <ion-icon name="create"></ion-icon>
+          </ion-button>
           Phone Number:
         </ion-item>
       </ion-list>
