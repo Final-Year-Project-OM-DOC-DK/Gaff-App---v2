@@ -8,6 +8,9 @@ import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view
 })
 export class UserService {
 
+  //test for email search, works when correct and incorrect
+  public email = '';
+
   constructor(private afs: AngularFirestore) { }
 
 
@@ -53,6 +56,20 @@ export class UserService {
       console.log('error authenticating');
     });
   }
+
+    //funntion to search for user using email
+    searchUser(){
+      firebase.auth().fetchSignInMethodsForEmail(this.email).then(results => {
+        if (results.length === 1){
+          //this email is was found
+          console.log('this email is was found')
+        }
+        else{
+          console.log('no user with this email')
+          //no user with this email / add toast or alert
+        }
+      });
+    }
 
   updatePhone(){}
 

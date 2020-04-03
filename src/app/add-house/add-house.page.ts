@@ -4,6 +4,7 @@ import { House, HouseService } from '../Services/house.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { identifierModuleUrl } from '@angular/compiler';
 import { Observable } from 'rxjs';
+import { UserService } from '../Services/user.service';
 
 @Component({
   selector: 'app-add-house',
@@ -20,13 +21,14 @@ export class AddHousePage implements OnInit {
   members: ['ossian','moore']
   }
 
-  currentUserId = this.houseService.getUserId();
-  currentUser = this.houseService.getUser();
+  currentUserId = this.userService.getUserId();
+  currentUser = this.userService.getUser();
 
   memberList: any = [];
 
   constructor(private navCtrl : NavController,
               private houseService: HouseService,
+              private userService: UserService,
               private toastCtrl: ToastController,
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
@@ -55,7 +57,7 @@ export class AddHousePage implements OnInit {
   //Fucntion to search users
   //add parameter for (user.email)
   searchUser(){
-    this.houseService.searchUser();
+    this.userService.searchUser();
   }
 
 

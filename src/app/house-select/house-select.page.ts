@@ -6,6 +6,7 @@ import { House, HouseService } from 'src/app/Services/house.service';
 import { RouterModule } from '@angular/router';
 import { AddHousePage } from '../add-house/add-house.page';
 import { HouseDetailsPage } from '../house-details/house-details.page';
+import { UserService } from '../Services/user.service';
 
 
 @Component({
@@ -20,11 +21,12 @@ export class HouseSelectPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               private houseService: HouseService,
+              private userServive: UserService,
               private router: RouterModule) { }
 
   ngOnInit() {
     this.houses = this.houseService.getHouses();
-    this.userId = this.houseService.getUser().uid.toString();
+    this.userId = this.userServive.getUser().uid.toString();
   }
 
   //Function to navigate to add-house page

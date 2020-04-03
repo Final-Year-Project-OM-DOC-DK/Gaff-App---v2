@@ -72,8 +72,7 @@ export class CalanderPage implements OnInit {
         this.loadCalenderEvents();
       });
       //adds calendar events for this house to variable eventSource
-      // this.eventSource = this.calendarService.getAllCalendarEvents(id);
-
+      //let events = this.calendarService.getAllCalendarEvents(id);
       //attempt to use for each to add to test array, so it is compatible with calendar
       //this.eventSource.forEach(function (calendarEvent) {
         //console.log(calendarEvent);
@@ -116,12 +115,6 @@ export class CalanderPage implements OnInit {
     swiper.slideNext();
   }
 
-
-
-
-
-
-
   addEvent() {
     //using copy in order to prevent blips in data input
     let eventCopy = {
@@ -149,9 +142,6 @@ export class CalanderPage implements OnInit {
     this.resetEvent();
   }
 
-
-
-
   //load calendar events from FB
   //map to evenSource[]
   loadCalenderEvents(){
@@ -170,8 +160,6 @@ export class CalanderPage implements OnInit {
       console.log(this.eventSource);
       return this.eventSource;
     });
-    
-    
   }
 
 
