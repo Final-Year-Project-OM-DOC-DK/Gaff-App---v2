@@ -48,6 +48,13 @@
         </ion-item>
       </ion-list>
     </ion-card-content>
+  </ion-card>
 
+  <br>
+  <ion-button expand="block" shape="round" icon-left (click)="createCode()"><ion-icon padding name="barcode"></ion-icon>  Create QR Code</ion-button>
+  <br>
+
+  <ion-card *ngIf="createdCode">
+    <ngx-qrcode [(qrc-value)]="createdCode"></ngx-qrcode>
   </ion-card>
 </ion-content>

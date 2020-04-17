@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { House, HouseService } from '../Services/house.service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-settings',
@@ -15,12 +16,15 @@ export class SettingsPage implements OnInit {
   currentUser;
   currentUserId;
 
+  scannedCode = null;
+
   //Initialise modules
   constructor(private navCtrl: NavController,
               private router: Router,
               private activatedRoute : ActivatedRoute,
               private houseService : HouseService,
-              public alertController : AlertController) { }
+              public alertController : AlertController,
+              private barcodeScanner: BarcodeScanner) { }
 
   //On init, split url to get id of house            
   ngOnInit() {
@@ -63,6 +67,24 @@ export class SettingsPage implements OnInit {
     ]
   });
  await alert.present();
+ }
+
+ scanCode(){
+  this.barcodeScanner.scan().then(barcodeData => {
+    this.scannedCode = barcodeData.text;
+    this.currentHouse.members.push(this.scannedCode);
+    this.alertController.create({
+      message: 'Successfully added member to Gaff',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            return;
+          }
+        }
+      ]
+    })
+  })
  }
 
 

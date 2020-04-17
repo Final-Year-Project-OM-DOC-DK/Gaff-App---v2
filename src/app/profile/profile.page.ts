@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../Services/user.service';
-import { currentId } from 'async_hooks';
 import { AlertController } from '@ionic/angular';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-profile',
@@ -11,9 +11,11 @@ import { AlertController } from '@ionic/angular';
 
 export class ProfilePage implements OnInit {
   constructor(private userService: UserService,
-              private alertCtrl: AlertController) { }
+              private alertCtrl: AlertController,
+              private barcodeScanner: BarcodeScanner) { }
 
   currentUser;
+  createdCode = null;
 
   ngOnInit() {
     //set currentUser var to User from service.
@@ -75,6 +77,12 @@ export class ProfilePage implements OnInit {
       ]
     });
     await alert.present();
+  }
+
+
+  createCode(){
+    this.createdCode = this.userService.getUserId();
+    console.log(this.createdCode);
   }
 
 

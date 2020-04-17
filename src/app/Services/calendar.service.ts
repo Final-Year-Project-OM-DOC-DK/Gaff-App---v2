@@ -37,12 +37,17 @@ export class CalendarService {
                 );
                }
 
-  //***CALENDAR FUNCTIONS */
-
   //Function to add calendar event.
   //HAVING .COLLECTION('CALENDAR').ADD - IF THERE IS NO COLLECTION IT WILL CREATE ONE, IF THERE IS IT WILL ADD TO IT
   addToCalendar(calendarEvent: calendarEvent, id: string): Promise<DocumentReference>{
     return this.houseCollection.doc(id).collection('calendar').add(calendarEvent);
+  }
+
+  setCalendar(eventSource , id:string) {
+    return this.houseCollection.doc(id).collection('calendar').doc('events').set(eventSource);
+  }
+  getCalendar(id: string){
+    return this.houseCollection.doc(id).collection('calendar').doc('events').get();
   }
 
   //Function to retrieve all calender events from a single house

@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { identifierModuleUrl } from '@angular/compiler';
 import { Observable } from 'rxjs';
 import { UserService } from '../Services/user.service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-add-house',
@@ -18,27 +19,25 @@ export class AddHousePage implements OnInit {
   name: '',
   address: '',
   eircode: '',
-  members: ['ossian','moore']
+  members: []
   }
 
   currentUserId = this.userService.getUserId();
   currentUser = this.userService.getUser();
 
-  memberList: any = [];
+  memberList = [];
+  memberEmailToAdd = '';
+  scannedCode = null;
 
   constructor(private navCtrl : NavController,
               private houseService: HouseService,
               private userService: UserService,
               private toastCtrl: ToastController,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private barcodeScanner: BarcodeScanner) { }
 
   ngOnInit() {
-    //For loop push house members
-    for (let i=0; i<this.house.members.length; i++){
-      this.memberList.push(this.house.members[i]); //[i].getUser(this.house.members[i].uid);
-      console.log(this.house.members[i])
-    }
   }
 
   //Adds current users UID into string array - members
@@ -56,9 +55,10 @@ export class AddHousePage implements OnInit {
 
   //Fucntion to search users
   //add parameter for (user.email)
-  searchUser(){
-    this.userService.searchUser();
+  searchUser(email){
+    this.userService.searchUser(email);
   }
+
 
 
   //Function to create toast
@@ -67,6 +67,24 @@ export class AddHousePage implements OnInit {
       message: msg,
       duration: 2000
     }).then(toast => toast.present());
+  }
+
+  //function to add member to house
+  addMember(id){
+    this.house.members.push(id);
+    this.showToast('Member added to house');
+  }
+
+  goToAddMemberPage(){
+    this.navCtrl.navigateForward('add-member');
+  }
+
+  scanCode(){
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.scannedCode = barcodeData.text;
+      this.addMember(this.scannedCode);
+      this.showToast('Scan Successful - Member Added!');
+    })
   }
 
 

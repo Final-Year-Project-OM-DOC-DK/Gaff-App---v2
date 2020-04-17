@@ -34,7 +34,7 @@ export class CalanderPage implements OnInit {
 
   //describes the mode (view) and sets to current date (today)
   calendar = {
-    mode: 'month',
+    mode: 'day',
     currentDate: new Date(),
   }
 
@@ -44,7 +44,7 @@ export class CalanderPage implements OnInit {
 
 
   //static set to false, so that component ALWAYS gets initialized after the view initialization
-  @ViewChild(CalendarComponent, { static: true }) myCal: CalendarComponent;
+  @ViewChild(CalendarComponent, { static: false }) myCal: CalendarComponent;
 
   constructor(private activatedRoute: ActivatedRoute,
     private route: Router,
@@ -56,7 +56,7 @@ export class CalanderPage implements OnInit {
     //call on initialising to give clear event inputs
     this.resetEvent();
     //do this after you set the collection to eventSource array
-    //this.myCal.loadEvents();
+    // this.myCal.loadEvents();
     //this disects the url to give me the ID needed to get the house object
     let id1 = this.route.url.split('id=');
     let id2 = id1[1].toString();
@@ -69,7 +69,7 @@ export class CalanderPage implements OnInit {
       this.houseService.getHouse(id).subscribe(house => {
         this.currentHouse = house;
         this.currentHouseId = id;
-        this.loadCalenderEvents();
+        console.log(this.loadCalenderEvents());
       });
       //adds calendar events for this house to variable eventSource
       //let events = this.calendarService.getAllCalendarEvents(id);
@@ -80,6 +80,9 @@ export class CalanderPage implements OnInit {
      // });
     }
     //get calendar collection from db and set to variable
+  // let data = this.calendarService.getCalendar(id).subscribe(results => {
+     //this.eventSource.push(results);
+  // });
   }
 
   loadEvents() {
@@ -135,29 +138,21 @@ export class CalanderPage implements OnInit {
     console.log(eventCopy);
     this.eventSource.push(eventCopy);
     //add event to FB collection - working
-    this.calendarService.updateCalendarCollection(eventCopy, this.currentHouseId);
+    //this.calendarService.updateCalendarCollection(eventCopy, this.currentHouseId);
     //reload calendar
+    //this.loadCalenderEvents();
     this.myCal.loadEvents();
     //reset fields on add event
     this.resetEvent();
   }
 
-  //load calendar events from FB
-  //map to evenSource[]
+  //load calendar events from FB. sets equal to eventSource
   loadCalenderEvents(){
     let calendarCollection = this.calendarService.getAllCalendarEvents(this.currentHouseId);
     calendarCollection.subscribe(events => {
       this.eventSource = events;
-      for (let i=0; i<=this.eventSource.length; i++){
-        let a = this.eventSource[i].startTime;
-        let b = this.eventSource[i].endTime;
-        this.eventSource[i].startTime = new Date(a);
-        this.eventSource[i].endTime = new Date(b);
-        console.log(a,b);
-        this.eventSource.push(event);
-        //delete this.eventSource[i].id;
-      }
       console.log(this.eventSource);
+      this.myCal.loadEvents();
       return this.eventSource;
     });
   }
