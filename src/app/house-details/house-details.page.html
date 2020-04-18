@@ -1,4 +1,4 @@
-<ion-split-pane>
+<ion-split-pane contentId="content">
 
 <ion-menu contentId="content">
   
@@ -12,7 +12,7 @@
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
-            <ion-item [routerLink]="p.url" routerDirection="root" [class.active-item]="selectedPath.startsWith(p.url)">
+            <ion-item (click)="refresh()" [routerLink]="p.url" routerDirection="root" [class.active-item]="selectedPath.startsWith(p.url)">
               {{ p.title }}
               <ion-icon name="arrow-forward" class="menuIcon"></ion-icon>
             </ion-item>

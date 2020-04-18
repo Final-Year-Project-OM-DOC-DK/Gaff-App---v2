@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-forum',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForumPage implements OnInit {
 
-  constructor() { }
+  constructor(menuCtrl: MenuController) { 
+  }
 
   ngOnInit() {
+    
   }
 
 }

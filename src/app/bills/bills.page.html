@@ -4,52 +4,74 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>bills</ion-title>
-    <ion-fab-button class="addButton" slot="end" size="small" (click)="goToAddBillPage()">
-      <ion-icon name="add" position="centre"></ion-icon>
-    </ion-fab-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+ <ion-card>
+  <ion-card-header tappable (click)="collapseCard = !collapseCard">
+    <ion-card-title>Add New Bill</ion-card-title>
+    <ion-card-subtitle>Click to Expand / Collapse</ion-card-subtitle>
+  </ion-card-header>
 
-      <ion-card>
-        <ion-icon name="list" size="large" slot="end"></ion-icon>
-        <ion-header>
-          <ion-card-title>Electricity</ion-card-title>
-            <ion-card-subtitle>Due 07/03/20 <br> €56.75 each</ion-card-subtitle>
-        </ion-header>
-        <ion-card-content>
-          <ul>
-            <li>
-              John <ion-checkbox checked={true}></ion-checkbox>
-            </li>
-            <li>
-              Alice <ion-checkbox></ion-checkbox>
-            </li>
-            <li>
-              Carl <ion-checkbox></ion-checkbox>
-            </li>
-        </ul>
-        </ion-card-content>
-      </ion-card>
-      <ion-card>
-        <ion-icon name="list" size="large" slot="end"></ion-icon>
-        <ion-header>
-          <ion-card-title>Rent</ion-card-title>
-            <ion-card-subtitle>Due 30/03/20 <br> €410 each</ion-card-subtitle>
-        </ion-header>
-        <ion-card-content>
-          <ul>
-            <li>
-              John <ion-checkbox ></ion-checkbox>
-            </li>
-            <li>
-              Alice <ion-checkbox checked={true}></ion-checkbox>
-            </li>
-            <li>
-              Carl <ion-checkbox checked={true}></ion-checkbox>
-            </li>
-        </ul>
-        </ion-card-content>
-      </ion-card>
+  <ion-card-content *ngIf="collapseCard">
+
+    <!--basic details for bill object-->
+    <ion-item>
+      <ion-input autofocus="true" type="text" placeholder="Title" [(ngModel)]="bill.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="decimal" placeholder="Amount in €" [(ngModel)]="bill.amount"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Due Date:</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="bill.dueDate" [min]="minDate"></ion-datetime>
+    </ion-item>
+
+    <!--List of payees-->
+    <ion-card>
+      <ion-card-subtitle>Add Payees</ion-card-subtitle>
+      <ion-list *ngFor="let p of bill.payees">
+        <ion-item>
+          {{p}}
+        </ion-item>
+      </ion-list>
+      <ion-input type="text" placeholder="Payees" [(ngModel)]="payee"></ion-input>
+      <ion-button (click)="addPayee(payee)"><ion-icon name="add"></ion-icon></ion-button>
+    </ion-card>
+
+    <!--Radio button entries-->
+    <ion-list>
+      <ion-radio-group [(ngModel)]="bill.repeat">
+        <ion-list-header>
+          <ion-label>Repeat</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>No-repeat</ion-label>
+          <ion-radio slot="start" value="norepeat"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Daily</ion-label>
+          <ion-radio slot="start" value="daily"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Weekly</ion-label>
+          <ion-radio slot="start" value="weekly"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Monthly</ion-label>
+          <ion-radio slot="start" value="monthly"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Yearly</ion-label>
+          <ion-radio slot="start" value="yearly"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <!--Button to add Bill to DB-->
+    <ion-button (click)="addBill()" expand="block" shape="round">Add Bill <ion-icon name="add" padding></ion-icon></ion-button>
+
+  </ion-card-content>
+ </ion-card>
 </ion-content>
