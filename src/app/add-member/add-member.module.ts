@@ -6,12 +6,12 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePage } from './profile.page';
+import { AddMemberPage } from './add-member.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage
+    component: AddMemberPage
   }
 ];
 
@@ -23,6 +23,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NgxQRCodeModule
   ],
-  declarations: [ProfilePage]
+  declarations: [AddMemberPage]
 })
-export class ProfilePageModule {}
+export class AddMemberPageModule {}

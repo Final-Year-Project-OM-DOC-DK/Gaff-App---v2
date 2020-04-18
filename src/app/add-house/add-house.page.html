@@ -30,9 +30,11 @@
       <ion-card-header tappable (click)="collapseCard = !collapseCard">Members:</ion-card-header>
       <ion-card-content *ngIf="!collapseCard">
         <ion-list>
-          <ion-item>currentUser: {{currentUser.uid}}</ion-item>
-          <ion-item *ngFor="let member of memberList">{{member}}</ion-item>
-          <ion-button expand="full" shape="round" (click)="searchUser()">Add Member</ion-button>
+          <ion-item>current user: {{currentUser.displayName}}</ion-item>
+          <div *ngIf="house.members">
+          <ion-item *ngFor="let member of house.members">{{member}}</ion-item>
+          </div>
+          <ion-button expand="block" shape="round" (click)="scanCode()">Add Member</ion-button>
         </ion-list>
       </ion-card-content>
     </ion-card>

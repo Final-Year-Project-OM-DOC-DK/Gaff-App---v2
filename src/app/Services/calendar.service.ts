@@ -14,14 +14,10 @@ export interface calendarEvent{
     allDay: false
 }
 
-
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class CalendarService {
-
   private houses: Observable<House[]>;
   private houseCollection: AngularFirestoreCollection<House>;
   private callendarEvents: Observable<calendarEvent[]>;
@@ -41,19 +37,23 @@ export class CalendarService {
                 );
                }
 
-
-  //***CALENDAR FUNCTIONS */
-
   //Function to add calendar event.
   //HAVING .COLLECTION('CALENDAR').ADD - IF THERE IS NO COLLECTION IT WILL CREATE ONE, IF THERE IS IT WILL ADD TO IT
   addToCalendar(calendarEvent: calendarEvent, id: string): Promise<DocumentReference>{
     return this.houseCollection.doc(id).collection('calendar').add(calendarEvent);
   }
 
+  setCalendar(eventSource , id:string) {
+    return this.houseCollection.doc(id).collection('calendar').doc('events').set(eventSource);
+  }
+  getCalendar(id: string){
+    return this.houseCollection.doc(id).collection('calendar').doc('events').get();
+  }
+
   //Function to retrieve all calender events from a single house
   //So far getting objects when added. need to map them to display
   getAllCalendarEvents(id : string){
-    this.callendarCollection = this.afs.collection('house').doc(id).collection<calendarEvent>('calendar');
+    this.callendarCollection = this.afs.collection('house').doc(id).collection('calendar'); //was collection<calendarEvents>
     this.callendarEvents = this.callendarCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {

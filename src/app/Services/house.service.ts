@@ -19,14 +19,6 @@ export interface House {
   members: string[]
 }
 
-//Interface for calender event
-export interface calendarEvent{
-  title: '',
-  description: '',
-  startTime: '',
-  endTime: '',
-  allDay: false
-}
 
 @Injectable({
   providedIn: 'root'
@@ -36,11 +28,6 @@ export class HouseService {
   //Initialise necessary objects to store results from Firebase DB
   private houses: Observable<House[]>;
   private houseCollection: AngularFirestoreCollection<House>;
-  private callendarEvents: Observable<calendarEvent[]>;
-  private callendarCollection: AngularFirestoreCollection<calendarEvent>;
-
-  //test to see did email work, worked when correct, worked when incorrect
-  public email = 'ossian@test.ie';
 
   //Initialise firebase and get collection from DB
   constructor(private afs: AngularFirestore) {
@@ -55,43 +42,6 @@ export class HouseService {
       })
     );
   }
-
-  //Function to retrieve user from DB
-  getUser(){
-    let user = firebase.auth().currentUser;
-    if (user){
-      return user;
-    } else{
-      console.log("no user found");
-    }
-  }
-
-
-  //funntion to search for user using email
-  searchUser(){
-    firebase.auth().fetchSignInMethodsForEmail(this.email).then(results => {
-      if (results.length === 1){
-        //this email is was found
-        console.log('this email is was found')
-      }
-      else{
-        console.log('no user with this email')
-        //no user with this email / add toast or alert
-      }
-    });
-
-  }
-
-  //Function to get current user id
-  getUserId(){
-    let user = firebase.auth().currentUser;
-    if (user){
-      return user.uid;
-    } else{
-      console.log("no user found");
-    }
-  }
-
 
   //***HOUSE FUNCTIONS */
   //Get all houses from DB
@@ -119,30 +69,6 @@ export class HouseService {
   //Delete house from DB
   deleteHouse(id: string): Promise<void> {
     return this.houseCollection.doc(id).delete();
-  }
-
-  //***CALENDAR FUNCTIONS */
-
-  //Function to add calendar event.
-  //HAVING .COLLECTION('CALENDAR').ADD - IF THERE IS NO COLLECTION IT WILL CREATE ONE, IF THERE IS IT WILL ADD TO IT
-  addToCalendar(calendarEvent: calendarEvent, id: string): Promise<DocumentReference>{
-    return this.houseCollection.doc(id).collection('calendar').add(calendarEvent);
-  }
-
-  //Function to retrieve all calender events from a single house
-  //So far getting objects when added. need to map them to display
-  getAllCalendarEvents(id : string){
-    this.callendarCollection = this.afs.collection('house').doc(id).collection<calendarEvent>('calendar');
-    this.callendarEvents = this.callendarCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return { id, ...data};
-        });
-      })
-    );
-    return this.callendarEvents;
   }
 
 }

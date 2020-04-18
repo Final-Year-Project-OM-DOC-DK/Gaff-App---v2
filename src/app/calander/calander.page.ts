@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
-import { House, HouseService, calendarEvent } from '../Services/house.service';
+import { House, HouseService } from '../Services/house.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { CalendarService } from '../Services/calendar.service';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -28,13 +28,12 @@ export class CalanderPage implements OnInit {
   minDate = new Date().toISOString();
 
   //source of stored events
-  eventSource = [];
-  test = [];
+  eventSource = []; 
   viewTitle;
 
   //describes the mode (view) and sets to current date (today)
   calendar = {
-    mode: 'month',
+    mode: 'day',
     currentDate: new Date(),
   }
 
@@ -44,43 +43,44 @@ export class CalanderPage implements OnInit {
 
 
   //static set to false, so that component ALWAYS gets initialized after the view initialization
-  @ViewChild(CalendarComponent, { static: true }) myCal: CalendarComponent;
+  @ViewChild(CalendarComponent, { static: false }) myCal: CalendarComponent;
 
   constructor(private activatedRoute: ActivatedRoute,
     private route: Router,
     private houseService: HouseService,
     private calendarService: CalendarService,
-    private afs: AngularFirestore) { }
+    private afs: AngularFirestore) { 
 
-  ngOnInit() {
-    //call on initialising to give clear event inputs
-    this.resetEvent();
-    //do this after you set the collection to eventSource array
-    //this.myCal.loadEvents();
     //this disects the url to give me the ID needed to get the house object
     let id1 = this.route.url.split('id=');
     let id2 = id1[1].toString();
     let id3 = id2.split('/');
     let id = id3[0].toString();
-
+    console.log(id);
     //gets house object through id and sets it to 'currentHouse'. Sets current house id outside of this function.
     this.houseService.getHouse(id);
     if (id) {
       this.houseService.getHouse(id).subscribe(house => {
         this.currentHouse = house;
         this.currentHouseId = id;
-        this.loadCalenderEvents();
       });
-      //adds calendar events for this house to variable eventSource
-      // this.eventSource = this.calendarService.getAllCalendarEvents(id);
-
-      //attempt to use for each to add to test array, so it is compatible with calendar
-      //this.eventSource.forEach(function (calendarEvent) {
-        //console.log(calendarEvent);
-        //this.test.push(calendarEvent);
-     // });
     }
-    //get calendar collection from db and set to variable
+      let DB = this.afs.collection('house').doc(id).collection('calendar');
+      DB.snapshotChanges().subscribe(colSnap => {
+        this.eventSource = [];
+        colSnap.forEach(snap => {
+          let event: any = snap.payload.doc.data();
+          event.id = snap.payload.doc.id;
+          event.startTime = event.startTime.toDate();
+          event.endTime = event.endTime.toDate();
+          this.eventSource.push(event);
+        });
+      });
+    }
+
+  ngOnInit() {
+    //call on initialising to give clear event inputs
+    this.resetEvent();
   }
 
   loadEvents() {
@@ -116,12 +116,6 @@ export class CalanderPage implements OnInit {
     swiper.slideNext();
   }
 
-
-
-
-
-
-
   addEvent() {
     //using copy in order to prevent blips in data input
     let eventCopy = {
@@ -138,54 +132,11 @@ export class CalanderPage implements OnInit {
       eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
       eventCopy.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate() + 1));
     }
-    //push event to event source array
-    console.log(eventCopy);
-    this.eventSource.push(eventCopy);
-    //add event to FB collection - working
-    this.calendarService.updateCalendarCollection(eventCopy, this.currentHouseId);
-    //reload calendar
-    this.myCal.loadEvents();
-    //reset fields on add event
-    this.resetEvent();
+
+    //Attempt to add event to Firebase DB
+    let DB = this.afs.collection('house').doc(this.currentHouseId).collection('calendar');
+    DB.add(eventCopy);
   }
-
-
-
-
-  //load calendar events from FB
-  //map to evenSource[]
-  loadCalenderEvents(){
-    let calendarCollection = this.calendarService.getAllCalendarEvents(this.currentHouseId);
-    calendarCollection.subscribe(events => {
-      this.eventSource = events;
-      for (let i=0; i<=this.eventSource.length; i++){
-        let a = this.eventSource[i].startTime;
-        let b = this.eventSource[i].endTime;
-        this.eventSource[i].startTime = new Date(a);
-        this.eventSource[i].endTime = new Date(b);
-        console.log(a,b);
-        this.eventSource.push(event);
-        //delete this.eventSource[i].id;
-      }
-      console.log(this.eventSource);
-      return this.eventSource;
-    });
-    
-    
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   today() {
     this.calendar.currentDate = new Date();

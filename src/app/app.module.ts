@@ -20,6 +20,10 @@ import {environment} from 'src/environments/environment';
 import {AngularFirestoreModule, FirestoreSettingsToken} from '@angular/fire/firestore'
 import { NgCalendarModule } from 'ionic2-calendar';
 
+//imports for qr creater and scanner
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
   signInOptions: [          //below are the different sign in methods
@@ -64,12 +68,14 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireAuthModule,
     AngularFirestoreModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
-    NgCalendarModule
+    NgCalendarModule,
+    NgxQRCodeModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    BarcodeScanner,
   ],
   bootstrap: [AppComponent]
 })

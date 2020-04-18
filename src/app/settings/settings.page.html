@@ -9,15 +9,22 @@
 
 <ion-content padding>
 
-  <ion-button expand="block">
+  <ion-card>
+    <ion-card-content class="description">
+      You can add a member by scanning their unique QR code. This code is 
+      generated in the 'profile' page
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" shape="round" (click)="scanCode()">
     Add Member
   </ion-button>
 
-  <ion-button expand="block">
+  <ion-button expand="block" shape="round">
     Edit House Details
   </ion-button>
 
-  <ion-button expand="block" color="danger" (click)="deleteHouse()">
+  <ion-button expand="block" shape="round" color="danger" (click)="deleteHouse()">
     Delete House
   </ion-button>
 
