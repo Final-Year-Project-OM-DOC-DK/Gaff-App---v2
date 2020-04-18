@@ -19,14 +19,6 @@ export interface House {
   members: string[]
 }
 
-//Interface for calender event
-export interface calendarEvent{
-  title: '',
-  description: '',
-  startTime: '',
-  endTime: '',
-  allDay: false
-}
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +28,6 @@ export class HouseService {
   //Initialise necessary objects to store results from Firebase DB
   private houses: Observable<House[]>;
   private houseCollection: AngularFirestoreCollection<House>;
-  private callendarEvents: Observable<calendarEvent[]>;
-  private callendarCollection: AngularFirestoreCollection<calendarEvent>;
 
   //Initialise firebase and get collection from DB
   constructor(private afs: AngularFirestore) {

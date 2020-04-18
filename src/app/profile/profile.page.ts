@@ -79,11 +79,10 @@ export class ProfilePage implements OnInit {
     await alert.present();
   }
 
-
+  //function to create QR code from unique ID
   createCode(){
     this.createdCode = this.userService.getUserId();
     console.log(this.createdCode);
   }
-
 
 }

@@ -44,12 +44,14 @@ export class HouseDetailsPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private houseService: HouseService,
-    private route: Router,
+    private router: Router,
     public navCtrl: NavController,
     public menuCtrl : MenuController) {
 
-    this.route.events.subscribe((event: RouterEvent) => {
-     this.selectedPath = event.url;
+    this.router.events.subscribe((event: RouterEvent) => {
+      if (event && event.url){
+        this.selectedPath = event.url;
+      }
     });
   }//end constructor
 
