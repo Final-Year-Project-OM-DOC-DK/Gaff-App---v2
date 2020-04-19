@@ -3,7 +3,7 @@ ion-toolbar{
   }
   ion-content{
     font-family: 'GothicCenturyBold';
-    --background: url('../../assets/img/shopli.jpg');
+    --background: url('../../assets/img/concreteBackground.jpg');
     background-repeat: no-repeat;
     background-size: auto;
   }
@@ -22,11 +22,11 @@ ion-toolbar{
     word-wrap: break-word;
   }
 
-.alert{
-  color: yellow;
-}
-
 .description{
   color:black;
   background-color:#55D6BE;
+}
+
+ion-button{
+  font-family: 'GothicCenturyBold';
 }

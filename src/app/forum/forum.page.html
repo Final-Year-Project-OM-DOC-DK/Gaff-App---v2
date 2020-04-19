@@ -17,6 +17,7 @@
           <p>{{message.time}}</p>
           <img *ngIf="message.photo.length >= 1" src="message.photo">
           <img *ngIf="message.photo.length <= 1" src="../../assets/img/default.png">
+        <ion-button expand="block" shape="round" (click)="deleteMessage(this.message.id)">Delete</ion-button>
         </ul>
         </ion-item>
     </ion-card-content>

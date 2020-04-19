@@ -42,12 +42,8 @@ export class SettingsPage implements OnInit {
   }//end if
  }//end on init
 
- //Function for alert
-
-
  //Function to delete House
  async deleteHouse(){
-
   const alert = await this.alertController.create({
     message: 'Are you sure you want to permanently delete this house?',
     buttons: [
@@ -69,6 +65,7 @@ export class SettingsPage implements OnInit {
  await alert.present();
  }
 
+ //fucntion to scan barcode
  scanCode(){
   this.barcodeScanner.scan().then(barcodeData => {
     this.scannedCode = barcodeData.text;
