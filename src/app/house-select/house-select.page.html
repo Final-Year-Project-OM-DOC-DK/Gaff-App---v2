@@ -13,7 +13,7 @@
 </ion-header>
 
 <!--For loop to asynchronously load. for loop to iterate through array of members in each house. If current user id = stored member id in house, then display-->
-<ion-content padding>
+<ion-content>
 <ion-card *ngFor="let house of (houses | async)">
   <div *ngFor="let member of house.members">
     <div *ngIf="this.userId === member ">
@@ -23,7 +23,6 @@
     <ion-item button (click)="goToHouseDetailsPage(this.house)">
       <ion-icon class="listIcon" item-left name="exit"></ion-icon>
       {{ house.name }}
-      {{member}}
     </ion-item>
   </ion-list>
 </div>

@@ -41,7 +41,7 @@
     </ion-card>
 
     <!--Radio button entries-->
-    <ion-list>
+    <ion-list class="radioButtons">
       <ion-radio-group [(ngModel)]="bill.repeat">
         <ion-list-header>
           <ion-label>Repeat</ion-label>
@@ -71,7 +71,30 @@
 
     <!--Button to add Bill to DB-->
     <ion-button (click)="addBill()" expand="block" shape="round">Add Bill <ion-icon name="add" padding></ion-icon></ion-button>
-
   </ion-card-content>
  </ion-card>
+
+ <!--Display Bills-->
+ <ion-card>
+   <ion-card-subtitle>Bills:</ion-card-subtitle>
+   <ion-card-content *ngFor="let bill of billsArray">
+      <ion-list>
+        <ion-card>
+        <ion-item>{{bill.title}}</ion-item>
+        <p>{{bill.dueDate }}</p>
+        <p>€{{bill.amount}}</p>
+        <h5 padding>Payees:
+          <p *ngFor="let payee of bill.payees">{{payee}}</p>
+        </h5>
+        <p>Repeats {{bill.repeat}}</p>
+      </ion-card>
+      </ion-list>
+   </ion-card-content>
+ </ion-card>
+
+
+
+
+
+ 
 </ion-content>

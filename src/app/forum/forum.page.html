@@ -8,5 +8,25 @@
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-content *ngFor="let message of messagesArray">
+        <ion-item>
+          <ul>
+          <h3>{{message.content}}</h3>
+          <p>{{message.sender}}</p>
+          <p>{{message.time}}</p>
+          <img *ngIf="message.photo.length >= 1" src="message.photo">
+          <img *ngIf="message.photo.length <= 1" src="../../assets/img/default.png">
+        </ul>
+        </ion-item>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
+
+<!--Footer with message input and send button-->
+<ion-footer>
+  <ion-input start item-left placeholder="Type message" [(ngModel)]="message.content">
+    <ion-button end (click)="addMessage()"><ion-icon name="send"></ion-icon></ion-button>
+  </ion-input>
+</ion-footer>

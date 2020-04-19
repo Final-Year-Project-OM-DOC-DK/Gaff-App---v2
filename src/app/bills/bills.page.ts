@@ -34,8 +34,7 @@ export class BillsPage implements OnInit {
                 let id1 = this.router.url.split('id=');
                 let id2 = id1[1].toString();
                 let id3 = id2.split('/');
-                let id = id3[0].toString();
-                console.log(id);              
+                let id = id3[0].toString();             
 
   //initialise DB             
   this.DB = this.afs.collection('house').doc(id).collection('bills');
@@ -45,9 +44,8 @@ export class BillsPage implements OnInit {
     colSnap.forEach(snap => {
       let bill: any = snap.payload.doc.data();
       bill.id = snap.payload.doc.id;
-      bill.dueDate = new Date(bill.dueDate);
+      bill.dueDate = new Date(bill.dueDate).toDateString();
       this.billsArray.push(bill);
-      console.log(bill);
     });
   });
 
