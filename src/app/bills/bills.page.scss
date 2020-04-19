@@ -2,12 +2,14 @@ ion-toolbar{
     --background: linear-gradient(90deg, #8CD1FF 0%, #232ED1 60%);
   }
   ion-content{
+    background-color: darken($color: #00000080, $amount: 3);
     font-family: 'GothicCenturyBold';
     --background: url('../../assets/img/concreteBackground.jpg');
     background-repeat: no-repeat;
     background-size: auto;
   }
   ion-title {
+    background-color: darken($color: #00c3ff80, $amount: 3);
     position: absolute;
     top: 0;
     left: 0;
@@ -21,25 +23,88 @@ ion-toolbar{
     color: black;
     word-wrap: break-word;
   }
+  
+.input-wrapper{
+  background: transparent;
+}
+.payee-button{
+  text-align: center;
+}
 
   ion-list{
+      background: transparent;
       font-family: 'GothicCenturyBold';
   }
+  ion-button{
+    position: relative;
+    border-bottom-right-radius: 30px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+      margin-left: 10px;
+      margin-right:10px;
+        font-size: 17px;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-bottom: 5px;
+  }
+  .radioBradioButtons{
+    border-bottom-right-radius: 30px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+      margin-left: 10px;
+      margin-right:10px;
+        font-size: 17px;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-bottom: 5px;
+  }
+
+  
   ion-card-title{
+    background-color: darken($color: #00c3ff80, $amount: 3);
       text-align: center;
       font-size: 22px;
+
+      border-bottom-right-radius: 30px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+      margin-left: 10px;
+      margin-right:10px;
+        font-size: 17px;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-bottom: 5px;
   }
   ion-card-subtitle{
+    background-color: rgba(77, 241, 104, 0.664);
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-left: 10px;
+    margin-right:10px;
       font-size: 17px;
       padding-left: 10px;
       padding-top: 10px;
       padding-bottom: 5px;
+      text-align: center;
   }
 ion-card{
-    --background: url('../../assets/img/paper.jpg');
+    background-color: darken($color: #00c3ff80, $amount: 3);
     border-bottom-right-radius: 30px;
     border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
     padding-top: 12px;
     color: black;
 }
+ .item-title{
+   text-align: center;
+   
+ }
 
+
+  

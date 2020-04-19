@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'house-details', loadChildren: './house-details/house-details.module#HouseDetailsPageModule' },
   { path: 'house-details:id', loadChildren: './house-details/house-details.module#HouseDetailsPageModule' },
   { path: 'add-tolist', loadChildren: './add-tolist/add-tolist.module#AddTolistPageModule' },
-  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
+  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
+  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'add-member', loadChildren: './add-member/add-member.module#AddMemberPageModule' }
 
 ];

@@ -65,9 +65,11 @@ export class HouseDetailsPage implements OnInit {
     }
   }
 
+
+  //to fix menu toggle bug ****************************
   refresh(){
-   //window.location.reload();
-   //this.menuCtrl.isEnabled();
-}
+    location.replace(this.selectedPath);
+    
+  }
 
 }
