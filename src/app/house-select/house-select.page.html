@@ -14,6 +14,7 @@
 
 <!--For loop to asynchronously load. for loop to iterate through array of members in each house. If current user id = stored member id in house, then display-->
 <ion-content>
+  <img class="image" src="../../assets/img/logo.png">
 <ion-card *ngFor="let house of (houses | async)">
   <div *ngFor="let member of house.members">
     <div *ngIf="this.userId === member ">
@@ -29,8 +30,8 @@
 </div>
 </ion-card>
 <ion-card>
-  <p padding>Please select a house from the list above, or add a new house</p>
-  <img src="../../assets/img/logo.png">
-</ion-card>
+  <p class="para">Please select a house from the list above, or add a new house</p>
+  </ion-card>
+
 
 </ion-content>

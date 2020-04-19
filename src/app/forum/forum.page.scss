@@ -13,9 +13,53 @@ ion-title {
     word-wrap: break-word;
   }
 
+  ion-item{
+   
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    
+  }
   ion-toolbar{
     --background: linear-gradient(90deg, #8CD1FF 0%, #232ED1 60%);
   }
   ion-content{
     --background:url(../../assets/img/concreteBackground.jpg);
   }
+  input-wrapper{
+    min-height: 100px;
+  }
+.profile-img{
+  max-height: 40px;
+  max-width: 40px;
+  text-align: left;
+  position: absolute;
+  top: 12px;
+  left: 10px;
+}
+.deleteMessage{
+  text-align: right;
+  position: absolute;
+  top: 12px;
+  right: 80px;
+}
+.date{
+  text-align: right;
+  position: absolute;
+  top: 50px;
+  right: 90px;
+}
+.mid{
+  margin-left: 50px;
+  top: 60px;
+ 
+}
+.item-native{
+  background-color: darken($color: #00c3ff80, $amount: 3);
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding-top: 12px;
+}

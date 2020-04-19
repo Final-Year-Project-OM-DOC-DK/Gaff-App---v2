@@ -16,44 +16,27 @@
         <ion-card-subtitle>Get these for the gaff please</ion-card-subtitle>
     </ion-header>
     <ion-card-content>
-      <ul>
+      <ul *ngFor="let list of shoppingArray">
         <li>
-          Milk <ion-checkbox checked={true}><br> <p>Username:Keaner</p></ion-checkbox>
+          {{list.item}} <ion-icon class="del"item-right name="trash" tappable (click)="deleteItem(this.list.id)"></ion-icon>
         </li>
-        <li>
-          Chicken<ion-checkbox checked={true}></ion-checkbox>
-        </li>
-        <li>
-          Bread <ion-checkbox checked={true}> Username:Ossian</ion-checkbox>
-        </li>
-        <li>
-          Eggs <ion-checkbox checked={true}></ion-checkbox>
-        </li>
-        <li>
-           Dishwasher tablets <ion-checkbox></ion-checkbox>
-        </li>
-        <li>
-          Washing Up liqud <ion-checkbox ></ion-checkbox>
-       </li>
-       <li>
-        Laundry Conditoner <ion-checkbox></ion-checkbox>
-      </li>
-      <li>
-         Few Minerals for the fridge <ion-checkbox></ion-checkbox>
-      </li>
-      <li>
-         Hunky Doreys(Big Bag)<ion-checkbox ></ion-checkbox>
-     </li>
-
     </ul>
     </ion-card-content>
   </ion-card>
  
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed"
-  (click)="gotoAddToList()">
-    <ion-fab-button >
-        <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
+<ion-card>
+  <ion-card-header tappable (click)="collapseCard = !collapseCard">
+    Add item to list
+    <ion-icon name="add"></ion-icon>
+  </ion-card-header>
 
-</ion-fab>
+  <ion-card-content *ngIf="collapseCard">
+    <ion-item>
+      <ion-input type="text" autofocus="true" placeholder="Enter Item" [(ngModel)]="shoppingList.item"></ion-input>
+    </ion-item>
+
+    <ion-button padding expand="block" shape="round" (click)="addItem(this.shoppingList)"><ion-icon name="add"></ion-icon>Add</ion-button>
+  </ion-card-content>
+</ion-card>
+
 </ion-content>
