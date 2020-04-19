@@ -58,6 +58,8 @@ export class ForumPage implements OnInit {
   addMessage(){
     this.message.sender = this.userService.getUser().displayName.toString();
     this.message.time = new Date().toDateString();
+    this.message.photo = this.userService.getUser().photoURL;
+    console.log(this.userService.getUser().photoURL);
     this.DB.add(this.message);
     console.log(this.message);
     this.resetMessage();
