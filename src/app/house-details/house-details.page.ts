@@ -66,7 +66,8 @@ export class HouseDetailsPage implements OnInit {
   }
 
   refresh(){
-    this.menuCtrl.isEnabled();
-  }
+   //window.location.reload();
+   //this.menuCtrl.isEnabled();
+}
 
 }
