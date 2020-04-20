@@ -14,22 +14,23 @@
       You can add a member by scanning their unique QR code. This code is 
       generated in the 'profile' page
     </ion-card-content>
-  </ion-card>
+  
 
-  <ion-button expand="block" shape="round" (click)="scanCode()">
+  <ion-button  expand="block" shape="round" (click)="scanCode()">
     Add Member
-    <ion-icon name="add" padding></ion-icon>
+    <ion-icon class="but" name="add" padding></ion-icon>
   </ion-button>
 
   <ion-button expand="block" shape="round">
     Edit House Details
-    <ion-icon name="create" padding></ion-icon>
+    <ion-icon class="but" name="create" padding></ion-icon>
   </ion-button>
 
   <ion-button expand="block" shape="round" color="danger" (click)="deleteHouse()">
     Delete House
     <ion-icon name="trash" padding></ion-icon>
   </ion-button>
+</ion-card>
 
   <img src="../../assets/img/logo.png">
 

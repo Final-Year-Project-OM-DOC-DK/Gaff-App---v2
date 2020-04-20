@@ -21,12 +21,37 @@ ion-toolbar{
     color: black;
     word-wrap: break-word;
   }
+  ion-card{
+    background-color: darken($color: #00c3ff80, $amount: 3);
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: black;
+}
+
 
 .description{
   color:black;
   background-color:#55D6BE;
+  border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 ion-button{
   font-family: 'GothicCenturyBold';
+  
 }
+
