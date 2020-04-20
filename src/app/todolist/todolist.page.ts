@@ -54,11 +54,10 @@ export class TodolistPage implements OnInit {
       this.resetItem();
     }
 
-    //function to delete message from DB
-    async deleteItem(item){
-      console.log("Delete");
+     //function to delete message from DB
+  async deleteMessage(item){
     const alert = await this.alertCtrl.create({
-      message: 'Are you sure you want to delete this Item?',
+      message: 'Are you sure you want to delete this task?',
       buttons: [
         {
           text: 'No',
@@ -69,14 +68,13 @@ export class TodolistPage implements OnInit {
         {
           text: 'Yes',
           handler: () => {
-            this.DB.doc(item).delete()
+            let DB = this.afs.collection('house').doc(this.currentHouseId).collection('todoList').doc(item).delete();
           }
         }
       ]
     });
     await alert.present();
   }
-
   //rest item to default values
     resetItem(){
       this.todoList = {
