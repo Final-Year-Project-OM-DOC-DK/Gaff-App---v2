@@ -1,6 +1,9 @@
 ion-toolbar{
   --background: linear-gradient(90deg, #8CD1FF 0%, #232ED1 60%);
 }
+ion-card-subtitle, ion-card-header{
+  color:black;
+}
 ion-content{
   font-family: 'GothicCenturyBold';
   --background: url('../../assets/img/concreteBackground.jpg');
