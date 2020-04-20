@@ -56,6 +56,7 @@ export class TodolistPage implements OnInit {
 
     //function to delete message from DB
     async deleteItem(item){
+      console.log("Delete");
     const alert = await this.alertCtrl.create({
       message: 'Are you sure you want to delete this Item?',
       buttons: [
