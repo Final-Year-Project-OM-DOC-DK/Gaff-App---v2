@@ -12,7 +12,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 export class ProfilePage implements OnInit {
   constructor(private userService: UserService,
               private alertCtrl: AlertController,
-              private barcodeScanner: BarcodeScanner) { }
+              private barcodeScanner: BarcodeScanner,
+              ) { }
 
   currentUser;
   createdCode = null;

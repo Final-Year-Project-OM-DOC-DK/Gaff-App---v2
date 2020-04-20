@@ -8,8 +8,10 @@
 </ion-header>
 <ion-content padding class="content">
   <!--fireabse UI-->
-  <firebase-ui></firebase-ui>
 
+  <div class="firbase">
+  <firebase-ui></firebase-ui>
+  </div>
 
 <ion-card padding *ngIf="afAuth.auth.currentUser">
   <!--current user object is null if user is logged out, ng if displays email if user is logged in-->

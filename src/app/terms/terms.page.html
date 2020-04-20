@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <!--back button on top left of toolbar-->
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-      <!--Add button to right of toolbar. Goes to Add House page-->
+    <!--Back button on top left of toolbar-->
+    <ion-buttons (click)="backButton()" slot="start">
+      <ion-icon name="arrow-back" size="large"></ion-icon>
     </ion-buttons>
-    <ion-title>terms</ion-title>
+    <ion-title>Terms</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card padding>
   <h1>Terms and Conditions ("Terms")</h1>
 
 
@@ -96,4 +96,6 @@
   <h2>Contact Us</h2>
 
   <p>If you have any questions about these Terms, please contact us.</p>
+
+</ion-card>
 </ion-content>

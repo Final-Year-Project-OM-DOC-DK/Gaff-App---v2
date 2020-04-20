@@ -13,6 +13,7 @@ ion-title {
   ion-card{
     background-color:transparentize($color:#55D6BE, $amount: 0.2);
     color: black;
+    border-radius: 30px;
   }
   ion-content{
     font-family: 'GothicCenturyBold';
@@ -41,6 +42,10 @@ ion-title {
   }
   p{
     color:#FFFAF0;
+  }
+
+  .firebase{
+    font-size: 50px;
   }
 
 
