@@ -3,7 +3,8 @@
     <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>To Do List</ion-title>
+    <ion-title>ToDo List</ion-title>
+
   </ion-toolbar>
 </ion-header>
 
@@ -11,37 +12,31 @@
   <ion-card>
     <ion-icon name="list" size="large" slot="end"></ion-icon>
     <ion-header>
-      <ion-card-title>Our Gaffs ToDo's</ion-card-title>
-        <ion-card-subtitle>Please Check The Box If Task Is Completed</ion-card-subtitle>
+      <ion-card-title>Gaffs ToDo's</ion-card-title>
+        <ion-card-subtitle>Get these tasks done</ion-card-subtitle>
     </ion-header>
     <ion-card-content>
-      <ul>
+      <ul *ngFor="let list of todoArray">
         <li>
-          Bring Out The Bins <ion-checkbox checked={true}><br> <p>Username:Keaner</p></ion-checkbox>
+          {{list.item}} <ion-icon class="del"item-right name="trash" tappable (click)="deleteTodo(this.list.id)"></ion-icon>
         </li>
-        <li>
-          Change Lightbulbs Upstairs<ion-checkbox></ion-checkbox>
-        </li>
-        <li>
-          Empty The Dishwasher <ion-checkbox checked={true}> Username:Ossian</ion-checkbox>
-        </li>
-        <li>
-          Ring Virgin Media About The Wifi <ion-checkbox></ion-checkbox>
-        </li>
-        <li>
-           Ring Landlord About Washing Machine <ion-checkbox></ion-checkbox>
-        </li>
-        <li>
-          Get A spare Key Cut <ion-checkbox checked={true}></ion-checkbox>
-       </li>
     </ul>
     </ion-card-content>
   </ion-card>
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed"
-  (click)="gotoAddToDo()">
-    <ion-fab-button >
-        <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
+ 
+<ion-card>
+  <ion-card-header tappable (click)="collapseCard = !collapseCard">
+    Add ToDo to list
+    <ion-icon name="add"></ion-icon>
+  </ion-card-header>
 
-</ion-fab>
+  <ion-card-content *ngIf="collapseCard">
+    <ion-item>
+      <ion-input type="text" autofocus="true" placeholder="Enter Task Here" [(ngModel)]="todoList.item"></ion-input>
+    </ion-item>
+
+    <ion-button padding expand="block" shape="round" (click)="addItem(this.todoList)"><ion-icon name="add"></ion-icon>Add</ion-button>
+  </ion-card-content>
+</ion-card>
+
 </ion-content>
