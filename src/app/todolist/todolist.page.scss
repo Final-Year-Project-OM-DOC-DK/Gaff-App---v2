@@ -40,7 +40,8 @@ ion-card-subtitle{
     padding-bottom: 5px;
 }
 ion-card{
-  --background: url('../../assets/img/ToDo.jpg');
+  //--background: url('../../assets/img/ToDo.jpg');
+  background-color: rgba(54, 253, 253, 0.39);
   border-bottom-right-radius: 30px;
   border-top-left-radius: 30px;
   padding-top: 12px;

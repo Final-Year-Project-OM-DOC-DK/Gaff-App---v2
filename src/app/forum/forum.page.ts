@@ -56,7 +56,8 @@ export class ForumPage implements OnInit {
 
   //function to add message to DB and reset to current values once finished
   addMessage(){
-    this.message.sender = this.userService.getUser().displayName.toString();
+    this.message.sender = this.userService.getUser().displayName;//toString();
+
     this.message.time = new Date().toDateString();
     this.message.photo = this.userService.getUser().photoURL;
     console.log(this.userService.getUser().photoURL);
