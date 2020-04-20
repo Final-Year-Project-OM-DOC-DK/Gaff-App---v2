@@ -85,5 +85,52 @@ export class SettingsPage implements OnInit {
  }
 
 
+ //async function to edit house details
+ async editHouse(){
+   const alert = await this.alertController.create({
+     message: 'Update Details',
+     inputs: [
+       {
+         name:'name',
+         placeholder: this.currentHouse.name
+       },
+       {
+         name: 'address',
+         placeholder: this.currentHouse.address
+       },
+       {
+         name:'eircode',
+         placeholder: this.currentHouse.eircode
+       }
+     ],
+     buttons: [
+       {
+         text: 'cancel',
+         handler: () => {
+           return;
+         }
+       },
+       {
+         text: 'Update',
+         handler: (data) => { //if != null
+          if (data.name.length > 0){
+            this.currentHouse.name = data.name;
+          }
+          if (data.address.length > 0){
+            this.currentHouse.address = data.address;
+          }
+          if (data.eircode > 0){
+            this.currentHouse.eircode = data.eircode;
+          }
+           console.log(this.currentHouse);
+           return this.houseService.updateHouse(this.currentHouse, this.currentHouseId);
+         }
+       }
+     ]
+   });
+   await alert.present();
+ }
+
+
 
 }//end class

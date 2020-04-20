@@ -19,6 +19,7 @@ const routes: Routes = [
       { path: 'shoppinglist', loadChildren: '../shoppinglist/shoppinglist.module#ShoppinglistPageModule' },
       { path: 'bills', loadChildren: '../bills/bills.module#BillsPageModule' },
       { path: 'settings', loadChildren: '../settings/settings.module#SettingsPageModule' },
+      { path: 'home', loadChildren: '../home/home.module#HomePageModule' }
     ]
   },
   {

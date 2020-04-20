@@ -27,6 +27,7 @@
       <ion-list>
 
         <ion-item>
+          <ion-label position="stacked">Username:</ion-label>
           <ion-button slot="end" (click)="editUsername()">
           <ion-icon name="create"></ion-icon>
         </ion-button>
@@ -34,17 +35,13 @@
         </ion-item>
 
         <ion-item>
-          <ion-button slot="end" (click)="editEmail()">
-          <ion-icon name="create"></ion-icon>
-        </ion-button>
+          <ion-label position="stacked">Email:</ion-label>
           {{currentUser.email}}
         </ion-item>
 
         <ion-item>
-          <ion-button slot="end" (click)="editPhone()">
-            <ion-icon name="create"></ion-icon>
-          </ion-button>
-          Phone Number:
+          <ion-label position="stacked">Account Created:</ion-label>
+          {{currentUser.metadata.creationTime}}
         </ion-item>
       </ion-list>
     </ion-card-content>
