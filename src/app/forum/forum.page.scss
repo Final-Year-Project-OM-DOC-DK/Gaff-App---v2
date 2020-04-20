@@ -13,8 +13,8 @@ ion-title {
     word-wrap: break-word;
   }
 
-  ion-item{
-   
+  ion-item{ 
+    
     border-bottom-right-radius: 30px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -31,29 +31,33 @@ ion-title {
     min-height: 100px;
   }
 .profile-img{
-  max-height: 40px;
-  max-width: 40px;
+  max-height: 30px;
+  max-width: 30px;
   text-align: left;
   position: absolute;
-  top: 12px;
-  left: 10px;
+  top: 10px;
+  left: 8px;
+}
+ion-icon{
+color: red($color: #ff0000b9);
 }
 .deleteMessage{
   text-align: right;
   position: absolute;
-  top: 12px;
-  right: 80px;
+  top: 20px;
+  right: 25px;
 }
 .date{
   text-align: right;
   position: absolute;
-  top: 50px;
-  right: 90px;
+  top: 40px;
+  left: 9px;
+  font-size: 9px;
 }
 .mid{
   margin-left: 50px;
-  top: 60px;
- 
+  top:100px;
+  font-size: 12px;
 }
 .item-native{
   background-color: darken($color: #b7eeff38, $amount: 3);

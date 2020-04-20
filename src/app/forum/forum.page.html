@@ -16,7 +16,7 @@
           <h2 class="mid">{{message.content}}</h2>
           <p class="date" >{{message.time}}</p>
           <img class="profile-img" src="../../assets/img/default.png">
-        <ion-button class="deleteMessage" expand="block" shape="round" (click)="deleteMessage(this.message.id)">Delete</ion-button>
+        <ion-button class="deleteMessage"(click)="deleteMessage(this.message.id)"><ion-icon name="trash"></ion-icon></ion-button>
         </ul>
         </ion-item>
     </ion-card-content>
