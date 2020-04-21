@@ -12,7 +12,7 @@ export class TodolistPage implements OnInit {
   DB;
   todoArray = [];
   currentHouseId;
-
+    //define elements of object
   todoList = {
     item: '',
     completed: false
@@ -48,7 +48,7 @@ export class TodolistPage implements OnInit {
   
     ngOnInit() {
     }
-
+      //fucntion to add to do
     addItem(){
       this.DB.add(this.todoList);
       this.resetItem();
@@ -75,7 +75,7 @@ export class TodolistPage implements OnInit {
     });
     await alert.present();
   }
-  //rest item to default values
+  //rest item to default values once todo added
     resetItem(){
       this.todoList = {
         item: '',

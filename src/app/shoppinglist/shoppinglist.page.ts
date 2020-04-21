@@ -13,7 +13,7 @@ export class ShoppinglistPage implements OnInit {
   DB;
   shoppingArray = [];
   currentHouseId;
-
+      //define elements of object
   shoppingList = {
     item: '',
     completed: false
@@ -49,7 +49,7 @@ export class ShoppinglistPage implements OnInit {
   
     ngOnInit() {
     }
-
+      //add item to shoplist function
     addItem(){
       this.DB.add(this.shoppingList);
       this.resetItem();
@@ -77,7 +77,7 @@ export class ShoppinglistPage implements OnInit {
     await alert.present();
   }
 
-  //rest item to default values
+  //rest item to default values once shoplist item added
     resetItem(){
       this.shoppingList = {
         item: '',
