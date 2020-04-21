@@ -1,13 +1,14 @@
 <ion-header>
     <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
+      <!--Back button on top left of toolbar-->
+      <ion-buttons (click)="backButton()" slot="start">
+        <ion-icon name="arrow-back" size="large"></ion-icon>
       </ion-buttons>
       <ion-title>Privacy</ion-title>
     </ion-toolbar>
   </ion-header>
 
-<ion-content>
+<ion-content padding>
     <h1>Privacy Policy</h1>
 
 

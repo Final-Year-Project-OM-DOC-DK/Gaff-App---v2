@@ -37,6 +37,10 @@ export class HouseDetailsPage implements OnInit {
     {
       title: 'Settings',
       url: 'settings'
+    },
+    {
+      title: 'Exit',
+      url: 'home'
     }
   ];
 

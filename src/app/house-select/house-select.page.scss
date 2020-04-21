@@ -41,7 +41,7 @@ ion-toolbar{
   margin-right: auto;
   width: 50%;
   height: 200px;
-  width: 200px;
+  width: 245px;
   }
 
   ion-back-button{
@@ -60,6 +60,8 @@ ion-toolbar{
     color: black;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     font-size: 17px;
     color: white;
   }
@@ -80,4 +82,5 @@ ion-list{
     padding-top: 0px;
     padding-bottom: 0px;
     border-radius: 0px;
+    
 }

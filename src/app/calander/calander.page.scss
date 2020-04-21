@@ -9,10 +9,23 @@ ion-title{
 ion-toolbar{
     --background: linear-gradient(90deg, #8CD1FF 0%, #232ED1 60%);
   }
-
+ ion-row, ion-button, .button {
+   color: green($color: #69ff439a);
+   background-color: green($color: #4eff3d9f);
+ }
+  .button{
+   color:black;
+   border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+ }
+ input-wrapper{
+  color: green($color: #69ff439a);
+ }
 .todayButton{
     --background: #55D6BE;
-    color: white;
+    color: black;
     opacity: 0.8;
     font-family: 'GothicCenturyBold';
 }
@@ -24,23 +37,36 @@ ion-content{
     background-size: cover;
   }
 
-  ion-card{
+  ion-card, .cc{
     background-color:transparentize($color:#55D6BE, $amount: 0.2);
     font-family: 'GothicCenturyBold';
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding-top: 12px;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-bottom: 12px;
+  }
+  .monthview-selected, td.monthview-current{
+    background-color: blue;
   }
 
   ion-item{
-    --background: #8CD1FF;
+    --background: rgba(49, 172, 255, 0.562);
     border-radius: 10px;
     font-family: 'GothicCenturyBold';
   }
-
+ion-list{
+  background-color: rgba(128, 255, 128, 0.541);
+}
   .addEventButton{
       --backround:#232ED1;
-      color: white;
+      
       font-family: 'GothicCenturyBold';
   }
 
   .cal{
-      --background:yellow;
+      background-color: green;
   }

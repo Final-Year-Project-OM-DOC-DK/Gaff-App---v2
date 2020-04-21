@@ -63,8 +63,9 @@ export class HouseService {
    return this.houseCollection.add(house);
   }
   //Update main attribues of house object in DB
-  updateHouse(house: House): Promise<void> {
-    return this.houseCollection.doc(house.id).update({ name:house.name, address:house.address, eircode:house.eircode, members:house.members});
+  updateHouse(house: House, id): Promise<void> {
+    console.log(house);
+    return this.houseCollection.doc(id).update({ name:house.name, address:house.address, eircode:house.eircode});
   }
   //Delete house from DB
   deleteHouse(id: string): Promise<void> {
