@@ -30,8 +30,9 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.7.1",
     "cordova-android": "8.1.0",
+    "cordova-ios": "5.1.1",
     "core-js": "^2.6.11",
-    "firebase": "^7.14.1",
+    "firebase": "^7.24.0",
     "firebaseui": "^4.4.0",
     "firebaseui-angular": "^4.0.1",
     "ionic2-calendar": "^0.5.8",
@@ -44,7 +45,7 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "~0.801.2",
-    "@angular-devkit/build-angular": "^0.803.24",
+    "@angular-devkit/build-angular": "^0.1001.7",
     "@angular-devkit/core": "~8.1.2",
     "@angular-devkit/schematics": "~8.1.2",
     "@angular/cli": "^8.1.3",
@@ -93,7 +94,8 @@
       }
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
